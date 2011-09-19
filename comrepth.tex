@@ -10,6 +10,16 @@
 \usepackage[a4paper,margin=1in,includeheadfoot]{geometry}
 \usepackage{amssymb}
 
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
 \renewcommand{\emptyset}{\varnothing}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -17,13 +27,40 @@
 
 \maketitle
 
-\tableofcontents 
+\tableofcontents
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
 \label{sec:intro}
 
-Representation theory of finite groups is when \ldots
+Representation theory of finite groups is concerned with the ways of writing a group $G$ as a group of automorphisms and being able to analyze the group in terms of these automorphisms.\\
+If $X$ is a structure then we have End$(X)=\{f:X\rightarrow X$, $f$ compatible with structure$\}$.  The set of automorphisms is given by Aut$(X)=\{f\in$End$(X)$, $f$ invertible$\}$.  Aut$(X)$ is a groups under composition, as it satisfies the group axioms:
+\begin{itemize}
+\item compositions of automorphisms are automorphisms; \item composition of maps is associative; \item id$_X$ is the identity; \item $f\in$ Aut$(X)$ is invertible by definition.
+\end{itemize}
+A representation realises a group $G$ as a group of automorphisms of some structure $X$.  It associates to each element $a\in G$ an automorphism of $X$ in a way that is compatible with the multiplication in $G$.
+
+\begin{definition}
+A \emph{representation} of a group $G$ is a homomorphism $\phi:G\rightarrow$Aut$(X)$ for some structure $X$.  For any representation we have
+\begin{itemize}
+\item $\phi(a^{-1})=\phi(a)^{-1}$; \item $\phi(1)=$id$_X$; \item $\phi(ab)=\phi(a)\phi(b)$.
+\end{itemize}
+\end{definition}
+
+\begin{example}
+Let $X=\{1,\ldots,n\}$ where $n\in\mathbb{N}$, ie. $X$ is a finite set.  Then End$(X)=\{f:x\rightarrow X\}=X^X=X^n$ and $|$End$(X)|=n^n$.  We have Aut$(X)=$Sym$(X)=$Sym$_n$, the symmetric group whose elements are all the permutations of $X$, with $|$Aut$(X)|=n!$.  The permutation representation is $\phi:G\rightarrow$Sym$(X)$.
+\end{example}
+
+\begin{example}
+Let $X=\mathbb{F}^n$, a vector space over a field $\mathbb{F}$.  Then End$(X)=\mathbb{F}^{n\times n}$ and if $|\mathbb{F}|=q$ then $|$End$(X)|=q^{n^2}$.  We have Aut$(X)=GL(X)=GL_n(\mathbb{F})$, the general linear group of all invertible matrices over $\mathbb{F}$.  In this case,
+\begin{align*}
+|GL_n(\mathbb{F})| &= (q^n-1)(q^n-q)(q^n-q^2)\ldots(q^n-q^{n-1})\\
+&= q^{n\choose 2}\prod_{i=1}^n(q^i-1).
+\end{align*}
+The matrix representation is $\phi:G\rightarrow GL_n(\mathbb{F})$.
+\end{example}
+
+Finding \textbf{one} representation of a group gives a concrete description of the group, allowing us to perform explicit calculations with its elements.  Classifying \textbf{all} representations provides structural information about the group and yields general results which are otherwise very difficult to prove.
 
 \nocite{*}
 
