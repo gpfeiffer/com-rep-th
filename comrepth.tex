@@ -62,6 +62,76 @@ The matrix representation is $\phi:G\rightarrow GL_n(\mathbb{F})$.
 
 Finding \textbf{one} representation of a group gives a concrete description of the group, allowing us to perform explicit calculations with its elements.  Classifying \textbf{all} representations provides structural information about the group and yields general results which are otherwise very difficult to prove.
 
+\begin{example}
+Let $X = G$. $Aut(G) =$ all invertible group homomorphisms $f: G \rightarrow G$.
+\end{example}
+
+\begin{example}
+$G = \mathbb{Z}_{n} = \mathbb{Z} / n \mathbb{Z} = \left\{ 0, \ldots , n - 1 \right\}$
+$+_{n}$ and $\cdot_{n}$ are taken modulo n: 
+$a +_{n} b := ( a + b ) mod n$ for $a, b \in \mathbb{Z}_{n}$
+$\left( \mathbb{Z}_{n}, +_{n} \right)$ is a commutative group. We want to find
+$End(X)$
+Thus we need to find all homomorphisms $f: \mathbb{Z}_{n} \rightarrow \mathbb{Z}_{n}$.
+
+
+$$f(0) = 0$$
+$$a \in \mathbb{Z}_{n} : a = \underbrace{1 + \ldots + 1}_{a \text{ times}}$$
+$$f(a) = f( \underbrace{1 + \ldots + 1}_{a \text{ times}})$$
+$$ = \underbrace{f(1) + \ldots + f(1)}_{a \text{ times}}$$
+
+$f$ is determined by choosing $f(1)$, any choice in $\mathbb{Z}_{n}$ is possible. Then $f$ is multiplication by $f(1)$.
+
+$$End(X) = \left\{ X \mapsto X \cdot c : c \in \mathbb{Z}_{n} \right\}$$
+$$Aut(X) = \mathbb{Z}_{n}^{\ast} = \left\{ c \in \mathbb{Z}_{n} : gcd ( c, n ) = 1 \right\}$$
+\end{example} 
+
+\begin{example}
+The automorphisms of a permutation.
+$X = \left\{ 1, \ldots, n \right\}, R \subseteq X^{2}$ is a binary relation (structure on $X$).
+$$End(X, R) = \left\{ f: X \rightarrow X, x R y \Rightarrow f(x) R f(y) \right\}$$
+$$Aut(X) = \left\{ \text{permutations in } End(X) \right\}$$
+
+A permutation of $X$ is a binary relation:
+\begin{itemize}
+\item As a function $x \mapsto x^{\alpha}$:
+$$\rightarrow Aut( \alpha ) = \left\{\text{ individual cycles, swap cycles of the same length} \right\}.$$
+\noindent Different ways of writing $\alpha$ in a prescribed cycle shape ($ \text{Centralizer of } \alpha \in Sym_{n}$).
+\item Total order on $X \left( \text{ write $\alpha$ as an image list}: \begin{pmatrix}1^{\alpha} & 2^{\alpha} & \ldots & n^{\alpha} \end{pmatrix} \rightarrow Aut(X) = 1 \right).$
+\end{itemize}
+\end{example}
+
+\subsection{Groups}
+\begin{definition}
+Recall: a set $G$ together with a binary operation $\ast: G \times G \rightarrow G$, $\left( a, b \right) \mapsto a \ast b$ is a group if:
+\begin{enumerate}
+\item $\left( a \ast b \right) \ast c = a \ast \left( b \ast c \right)$ (Associativity).
+\item There exists an element $e \in G$ such that $e \ast a = a = a \ast e$ for all $a \in G$ (identity).
+\item For each $a \in G$ there is an element $a^{ - 1} \in G$ such that $a \ast a^{- 1} = a^{- 1} \ast a = e$ (inverse).
+\end{enumerate}
+\end{definition}
+
+\begin{remark}
+\begin{itemize}
+\item Usually $e$ is written $1_{G}$ or 1.
+\item $\left( G, \ast \right)$ is a monoid if it satisfies (1) and (2) above.
+\item $End(X)$ is a monoid.
+\item Let $M$ be a monoid then, $M^{\sharp} = \left\{ a \in M : a \text{ invertible} \right\}$ is a group.
+\end{itemize}
+\end{remark}
+
+\begin{example}(Examples of Groups).
+\begin{enumerate}
+\item $\zeta_{n} = e^{2 \pi i / 2}$, a primitive $n^{th}$ root of unity. 
+$C_{n} = \left\{ \zeta_{n}^{i} : i \in \mathbb{Z} \right\}$ is a cyclic group. 
+$$\left( C_{n}, \cdot \right) \longleftrightarrow \left( \mathbb{Z}_{n}, + \right)$$
+$$\zeta_{n}^{k} \longleftrightarrow k \text{ mod } n$$
+\item$\left( \mathbb{Z}, + \right)$, the infinite cyclic group.
+\item Rotations and reflections of regular $n$-gons: dihedral groups.
+\item Symmetric groups and general linear groups.
+\end{enumerate}
+\end{example}
+
 \nocite{*}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
