@@ -34,25 +34,25 @@
 \label{sec:intro}
 
 Representation theory of finite groups is concerned with the ways of writing a group $G$ as a group of automorphisms and being able to analyze the group in terms of these automorphisms.\\
-If $X$ is a structure then we have End$(X)=\{f:X\rightarrow X$, $f$ compatible with structure$\}$.  The set of automorphisms is given by Aut$(X)=\{f\in$End$(X)$, $f$ invertible$\}$.  Aut$(X)$ is a groups under composition, as it satisfies the group axioms:
+If $X$ is a structure then we have $End(X)=\{f:X\rightarrow X$, $f$ compatible with structure$\}$.  The set of automorphisms is given by $Aut(X)=\{f\in End(X)$, $f$ invertible$\}$.  $Aut(X)$ is a groups under composition, as it satisfies the group axioms:
 \begin{itemize}
 \item compositions of automorphisms are automorphisms; \item composition of maps is associative; \item id$_X$ is the identity; \item $f\in$ Aut$(X)$ is invertible by definition.
 \end{itemize}
 A representation realises a group $G$ as a group of automorphisms of some structure $X$.  It associates to each element $a\in G$ an automorphism of $X$ in a way that is compatible with the multiplication in $G$.
 
 \begin{definition}
-A \emph{representation} of a group $G$ is a homomorphism $\phi:G\rightarrow$Aut$(X)$ for some structure $X$.  For any representation we have
+A \emph{representation} of a group $G$ is a homomorphism $\phi:G\rightarrow Aut(X)$ for some structure $X$.  For any representation we have
 \begin{itemize}
-\item $\phi(a^{-1})=\phi(a)^{-1}$; \item $\phi(1)=$id$_X$; \item $\phi(ab)=\phi(a)\phi(b)$.
+\item $\phi(a^{-1})=\phi(a)^{-1}$; \item $\phi(1)=id_X$; \item $\phi(ab)=\phi(a)\phi(b)$.
 \end{itemize}
 \end{definition}
 
 \begin{example}
-Let $X=\{1,\ldots,n\}$ where $n\in\mathbb{N}$, ie. $X$ is a finite set.  Then End$(X)=\{f:x\rightarrow X\}=X^X=X^n$ and $|$End$(X)|=n^n$.  We have Aut$(X)=$Sym$(X)=$Sym$_n$, the symmetric group whose elements are all the permutations of $X$, with $|$Aut$(X)|=n!$.  The permutation representation is $\phi:G\rightarrow$Sym$(X)$.
+Let $X=\{1,\ldots,n\}$ where $n\in\mathbb{N}$, ie. $X$ is a finite set.  Then $End(X)=\{f:x\rightarrow X\}=X^X=X^n$ and $|End(X)|=n^n$.  We have $Aut(X)=Sym(X)=Sym_n$, the symmetric group whose elements are all the permutations of $X$, with $|Aut(X)|=n!$.  The permutation representation is $\phi:G\rightarrow Sym(X)$.
 \end{example}
 
 \begin{example}
-Let $X=\mathbb{F}^n$, a vector space over a field $\mathbb{F}$.  Then End$(X)=\mathbb{F}^{n\times n}$ and if $|\mathbb{F}|=q$ then $|$End$(X)|=q^{n^2}$.  We have Aut$(X)=GL(X)=GL_n(\mathbb{F})$, the general linear group of all invertible matrices over $\mathbb{F}$.  In this case,
+Let $X=\mathbb{F}^n$, a vector space over a field $\mathbb{F}$.  Then $End(X)=\mathbb{F}^{n\times n}$ and if $|\mathbb{F}|=q$ then $|End(X)|=q^{n^2}$.  We have Aut$(X)=GL(X)=GL_n(\mathbb{F})$, the general linear group of all invertible matrices over $\mathbb{F}$.  In this case,
 \begin{align*}
 |GL_n(\mathbb{F})| &= (q^n-1)(q^n-q)(q^n-q^2)\ldots(q^n-q^{n-1})\\
 &= q^{n\choose 2}\prod_{i=1}^n(q^i-1).
@@ -68,7 +68,7 @@ Let $X = G$. $Aut(G) =$ all invertible group homomorphisms $f: G \rightarrow G$.
 
 \begin{example}
 $G = \mathbb{Z}_{n} = \mathbb{Z} / n \mathbb{Z} = \left\{ 0, \ldots , n - 1 \right\}$
-$+_{n}$ and $\cdot_{n}$ are taken modulo n: 
+$+_{n}$ and $\cdot_{n}$ are taken modulo n:
 $a +_{n} b := ( a + b ) mod n$ for $a, b \in \mathbb{Z}_{n}$
 $\left( \mathbb{Z}_{n}, +_{n} \right)$ is a commutative group. We want to find
 $End(X)$
@@ -84,7 +84,7 @@ $f$ is determined by choosing $f(1)$, any choice in $\mathbb{Z}_{n}$ is possible
 
 $$End(X) = \left\{ X \mapsto X \cdot c : c \in \mathbb{Z}_{n} \right\}$$
 $$Aut(X) = \mathbb{Z}_{n}^{\ast} = \left\{ c \in \mathbb{Z}_{n} : gcd ( c, n ) = 1 \right\}$$
-\end{example} 
+\end{example}
 
 \begin{example}
 The automorphisms of a permutation.
@@ -122,14 +122,61 @@ Recall: a set $G$ together with a binary operation $\ast: G \times G \rightarrow
 
 \begin{example}(Examples of Groups).
 \begin{enumerate}
-\item $\zeta_{n} = e^{2 \pi i / 2}$, a primitive $n^{th}$ root of unity. 
-$C_{n} = \left\{ \zeta_{n}^{i} : i \in \mathbb{Z} \right\}$ is a cyclic group. 
+\item $\zeta_{n} = e^{2 \pi i / 2}$, a primitive $n^{th}$ root of unity.
+$C_{n} = \left\{ \zeta_{n}^{i} : i \in \mathbb{Z} \right\}$ is a cyclic group.
 $$\left( C_{n}, \cdot \right) \longleftrightarrow \left( \mathbb{Z}_{n}, + \right)$$
 $$\zeta_{n}^{k} \longleftrightarrow k \text{ mod } n$$
 \item$\left( \mathbb{Z}, + \right)$, the infinite cyclic group.
 \item Rotations and reflections of regular $n$-gons: dihedral groups.
 \item Symmetric groups and general linear groups.
 \end{enumerate}
+\end{example}
+
+\section{$G$-sets}
+\label{sec:G-sets}
+Let $G$ be a finite group.  The idea of this chapter is to study \textbf{actions} of $G$ on sets $X$.  We will see that this is a (more) convenient way to look at permutation representations.  (\textbf{Recall:} a permutation representation of $G$ is a homomorphism $\phi:G\rightarrow Sym(X)$.)
+
+\begin{definition}
+Let $X$ be a finite set.  An \emph{action} of $G$ on $X$ is a map $X\times G\rightarrow X$, $(x, a)\mapsto x.a$ such that:
+\begin{description}
+\item[(A1)] $(x.a).b=x.(ab)$ for all $x\in X$, $a, b\in G$ (Composition);
+\item[(A2)] $x.1=x$ for all $x\in X$ (Identity).
+\end{description}
+\end{definition}
+
+\textbf{Note:} $(A1)\nRightarrow(A2).$  For example, if $X=\{0, 1\}$ with $x.a=0$ for all $x\in X$ and $a\in G$, this satisfies $(A1)$ but not $(A2)$.
+
+\begin{example}
+We give some examples of actions.
+\begin{enumerate}
+\item $Sym(X)$ acts "naturally" on $X$.  We write $x^a$ for the image of $x\in X$ under $a\in Sym(X)$.  Then we can define an action of $Sym(X)$ on $X$ as $x.a:=x^a$.  The product $ab$ of two permutations $a, b\in Sym(X)$ is the result of first applying $a$ and then applying $b$.  By $(A1)$ we have $x^{ab}=x.(ab)=(x.a).b=(x^a)^b$.  For example $(12)(23)=(132)$ as we "read from the left".
+\item $G$ acts on itself by right multiplication.  Let $X=G$ and $x.a:=xa$.  Then for $x, a, b\in G$ we have $(x.a).b=(xa).b=(xa)b=x(ab)=x.(ab)$ so $(A1)$ is satisfied.  Also, $x.1_G=x1_G=x$ so $(A2)$ is satisfied.
+\item If we let $X=G$ and $x.a=ax$ then $(A2)$ is clearly satisfied.  For $x, a, b\in G$, $(x.a).b=(ax).b=b(ax)=(ba)x=x.(ba)\neq x.(ab)$.  In this case $(A2)$ is not satisfied, so left multiplication is not an action.\\
+    However, we can modify this to make it work, as $G$ acts on $X=G$ by \textbf{inverse} left multiplication, where $x.a=a^{-1}x$.  Again, $(A2)$ is clearly satisfied.  Recall that $(ab)^{-1}=b^{-1}a^{-1}$ for any $a, b\in G$.  Hence, for $x, a, b\in G$ we have $(x.a).b=(a^{-1}x).b=b^{-1}(a^{-1}x)=(b^{-1}a^{-1})x=(ab)^{-1}x=x.(ab)$ so $(A1)$ is satisfied and we have an action.
+\item $G$ acts on both sides of $X=G$ by \emph{conjugation}, i.e. $x.a=a^{-1}xa$.  To see this, let $x, a, b\in G$.  Then $(x.a).b=(a^{-1}xa).b=b^{-1}(a^{-1}xa)b=(b^{-1}a^{-1})x(ab)=(ab)^{-1}x(ab)=x.(ab)$ so $(A1)$ is satisfied.  Also, $x.1=1x1=x$ so $(A2)$ is satisfied.
+\item $C_2$, the cyclic group consisting of $1$ and $a$, with $a^2=1$, acts on the divisors of $n\in\mathbb{N}$ by $d.a=n/d$.  We have $d.a^2=(d.a).a=(n/d).a=n/(n/d)=d$.
+\end{enumerate}
+\end{example}
+
+\begin{remark}
+Notice that an action needs no inverses, so action is a monoid concept.  If an element $a\in G$ has an inverse $a^{-1}$ then we have $(x.a).a^{-1}=x.(aa^{-1})=x.1=x$.
+\end{remark}
+
+\begin{definition}
+A \emph{$G$-set} is a finite set $X$ together with an action of $G$ on $X$.  $G$-sets are permutation representations.
+\end{definition}
+
+\begin{theorem}[Action Theorem]
+Suppose $X$ is a $G$-set.  Then $\Phi:G\rightarrow Sym(X)$, $a\mapsto\tilde{a}=(x\mapsto x.a)\in End(X)$ is a permutation representation of $G$ (on $X$).  Conversely, if $X$ is a finite set and $f:G\rightarrow Sym(X)$ is a permutation representation then $X$ is a $G$-set with $a.x=x^{f(a)}$ for all $x\in X$, $a\in G$.
+
+\begin{proof}
+To show that $\Phi:G\rightarrow Sym(X)$, $a\mapsto\tilde{a}=(x\mapsto x.a)\in End(X)$ is a permutation representation of $G$, we need to show that it is a homomorphism.  Let $a, b\in G$, then $\Phi(ab)=\widetilde{ab}=x\mapsto x.(ab)=x\mapsto(x.a).b=(x\mapsto x.a)\cdot(x\mapsto x.b)=\tilde{a}\cdot\tilde{b}=\Phi(a)\Phi(b)$, so $\Phi:G\rightarrow Sym(x)$ is a homomorphism and therefore a permutation representation.\\
+Conversely, we need to show that if $f:G\rightarrow Sym(X)$ is a permutation representation, then $X\times G\rightarrow X$, $x.a\mapsto x^{f(a)}$ is an action.  Let $x\in X$ and $a, b\in G$.  Then $(x.a).b=(x^{f(a)}).b=(x^{f(a)})^{f(b)}=x^{f(a)f(b)}=x^{f(ab)}=x.(ab)$ so $(A1)$ is satisfied.  Also, $x.1=x^{f(1)}=x^1=x$ so $(A2)$ is satisfied.  Therefore we have an action, so $X$ is a $G$-set.
+\end{proof}
+\end{theorem}
+
+\begin{example}
+A set $X$ is trivially a $G$-set with $x.a=x$ for $x\in X$ and $a\in G$.
 \end{example}
 
 \nocite{*}
