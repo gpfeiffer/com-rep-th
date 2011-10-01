@@ -179,6 +179,93 @@ Conversely, we need to show that if $f:G\rightarrow Sym(X)$ is a permutation rep
 A set $X$ is trivially a $G$-set with $x.a=x$ for $x\in X$ and $a\in G$.
 \end{example}
 
+\begin{definition}
+Let $G$ and $H$ be monoids. A map $f: G \rightarrow H$ is a homomorphism of monoids if:
+\begin{enumerate}
+\item $f(ab) = f(a)f(b)$ for all $a, b \in G$
+\item $f(1_{G}) = 1_{H}$
+\end{enumerate}
+\end{definition}
+
+\begin{remark}
+If $H$ is a group, $a \in G$ then $f(a) \in H$ has an inverse $f(a)^{-1}$.
+
+$1_{h} = f(a)f(a)^{-1} = f( 1_{G} a )f(a)^{-1} = f(1_{G})f(a)f(a)^{-1} = f(1_{G}) 1_{H} = f(1_{G}).$
+Also $f(a^{-1}) = f(a)^{-1}$.
+\end{remark}
+
+\begin{example}
+Let $H \leq G$ be a subgroup.
+$G / H = \left\{ Ha : a \in G \right\}$ the set of all right cosets of $H$ in $G$.
+$G$ acts on $G / H$. $Ha.b := H(ab)$, $b \in G$. $Ha = \left\{ ha : h \in H \right\}$. 
+\end{example}
+
+\begin{center}
+\textbf{New actions from old}
+\end{center}
+Suppose $X$ is a $G$-set then:
+\begin{itemize}
+\item $G$ acts on $X^{k}: \left( x_{1}, \ldots, x_{k} \right) \cdot a := \left(  x_{1} a, \ldots, x_{k} a \right)$, $(A1)$ and $(A2)$.
+\item $G$ acts on $2^{X} : Y \subseteq X$, $Ya := \left\{ xa : x \in Y \right\}.$
+\end{itemize}
+
+Now suppose $X$ and $Y$ are both $G$-sets.
+\begin{itemize}
+\item $G$ acts on $X \times Y: \left( x, y \right) \cdot a := \left( x \cdot a, y \cdot a \right) $
+\item $G$ acts on $X \sqcup Y$
+\end {itemize}
+
+$z \cdot a:=
+\begin{cases}
+z \cdot_{x} a & \mbox{if } z \in X\\
+z \cdot_{y} a & \mbox{if } z \in Y
+\end{cases}$
+
+This gives a notion of decomposability.
+
+\begin{center}
+\textbf{Orbits and Stabilizers}
+\end{center}
+
+\begin{definition}
+Let $X$ be a $G$-set. $G_{x} = \left\{ a \in G : x \cdot a = x \right\}$ is the \emph{stabilizer} of $x$.
+$xG = \left\{ x\cdot a : a \in G \right\}$ is the \emph{orbit} of $x$.
+\end{definition}
+
+\begin{theorem}
+\begin{enumerate}
+\item $G_{x}$ is a subgroup of $G$ \left( products and inverses of stabilizing elements do stabilize \right). 
+\item $X / G = \left\{ x \cdot G : x \in X \right\}$ is a partition of $X$ into $G$-sets.
+\item $x \cdot G \cong_{G} G / G_{x}$
+\end{enumerate}
+\end{theorem}
+
+\begin{center}
+\textbf{G-maps, isomorphisms of G-sets and similar actions}
+\end{center}
+
+\begin{definition}
+Let $X$, $Y$ be $G$-sets. A map $f : X \rightarrow Y$ is a \emph{$G$-map} if $f(x \cdot a ) = f(x) \cdot a$ for all $a \in G$ and $x \in X$.
+\end{definition}
+
+\begin{example}
+$D_{12}$ acts as the symmetries of a a regular hexagon with vertices labelled from 0 to 5.
+Let $X = \left\{ 0, 1, 2, 3, 4, 5 \right\}$ and $Y = \left\{ \left\{0, 3 \right\}, \left\{ 1, 4 \right\}, \left\{ 2, 5 \right\} \right\}$
+Define a map $f: X \rightarrow Y$ by $x \mapsto [ x ]$
+$f( x \cdot a ) = [ x \cdot a ] = [ x ] \cdot a = f( x ) \cdot a$
+Thus $f$ is a $G$-map.
+\end{example}
+
+ If $f$ is a bijection we call it a $G$-isomorphism. $X$ and $Y$ are isomorphic as $G$-sets \left( $X \cong_{G} Y$ \right) if there exists a $G$-isomorphism $f: X \rightarrow Y$.
+
+\begin{itemize}
+\item A $G$-set $X$ is called \emph transitive if $X = x \cdot G$, for some/all $x \in X$.
+\item Every $G$-set is a disjoint union of transitive $G$-sets.
+\item Every transitive $G$-set is similar to $G / H$ for some subgroup $H$ of $G$.
+\end{itemize}
+  
+ 
+
 \nocite{*}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
