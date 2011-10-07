@@ -197,7 +197,7 @@ Also $f(a^{-1}) = f(a)^{-1}$.
 \begin{example}
 Let $H \leq G$ be a subgroup.
 $G / H = \left\{ Ha : a \in G \right\}$ the set of all right cosets of $H$ in $G$.
-$G$ acts on $G / H$. $Ha.b := H(ab)$, $b \in G$. $Ha = \left\{ ha : h \in H \right\}$. 
+$G$ acts on $G / H$. $Ha.b := H(ab)$, $b \in G$. $Ha = \left\{ ha : h \in H \right\}$.
 \end{example}
 
 \begin{center}
@@ -213,7 +213,7 @@ Now suppose $X$ and $Y$ are both $G$-sets.
 \begin{itemize}
 \item $G$ acts on $X \times Y: \left( x, y \right) \cdot a := \left( x \cdot a, y \cdot a \right) $
 \item $G$ acts on $X \sqcup Y$
-\end {itemize}
+\end{itemize}
 
 $z \cdot a:=
 \begin{cases}
@@ -234,7 +234,7 @@ $xG = \left\{ x\cdot a : a \in G \right\}$ is the \emph{orbit} of $x$.
 
 \begin{theorem}
 \begin{enumerate}
-\item $G_{x}$ is a subgroup of $G$ \left( products and inverses of stabilizing elements do stabilize \right). 
+\item $G_{x}$ is a subgroup of $G$ (products and inverses of stabilizing elements do stabilize).
 \item $X / G = \left\{ x \cdot G : x \in X \right\}$ is a partition of $X$ into $G$-sets.
 \item $x \cdot G \cong_{G} G / G_{x}$
 \end{enumerate}
@@ -256,7 +256,7 @@ $f( x \cdot a ) = [ x \cdot a ] = [ x ] \cdot a = f( x ) \cdot a$
 Thus $f$ is a $G$-map.
 \end{example}
 
- If $f$ is a bijection we call it a $G$-isomorphism. $X$ and $Y$ are isomorphic as $G$-sets \left( $X \cong_{G} Y$ \right) if there exists a $G$-isomorphism $f: X \rightarrow Y$.
+ If $f$ is a bijection we call it a $G$-isomorphism. $X$ and $Y$ are isomorphic as $G$-sets $\left( X \cong_{G} Y \right)$ if there exists a $G$-isomorphism $f: X \rightarrow Y$.
 
 \begin{itemize}
 \item A $G$-set $X$ is called \emph transitive if $X = x \cdot G$, for some/all $x \in X$.
@@ -264,9 +264,135 @@ Thus $f$ is a $G$-map.
 \item Every transitive $G$-set is similar to $G / H$ for some subgroup $H$ of $G$.
 \end{itemize}
 
+\section{GAP}
+GAP is a system for computational algebra, with an emphasis on group theory.  It provides a programming language which is easy to learn and understand, so it doesn't get in the way of the mathematics.  GAP is an interactive system. It continuously executes a read evaluate print loop.\\
 
-  
- 
+To begin, typing \verb"gap" at the prompt of your operating system followed by the return key will start GAP and will bring up its own prompt\\
+\verb"gap>"\\
+where you can type in further commands.  To end a GAP session, type in \verb"quit;".
+
+\begin{center}
+\textbf{Permutations}
+\end{center}
+
+Permutations in GAP are represented as disjoint cycles:\\
+\verb"gap> (1,2,3)(6,7)"\\
+and can be multiplied:\\
+\verb"gap> (1,2,3)(6,7)*(2,3,5)(4,7);"\\
+This can also be written as:\\
+\verb"gap> a:=(1,2,3)(6,7)"\\
+\verb"gap> b:=(2,3,5)(4,7);"\\
+\verb"gap> a*b;"\\
+
+Actions act from the right in GAP, using the \verb"^" notation, which we say as "under".  For example,\\
+\verb"gap> 2^(1,2,3);"\\
+\verb"3"\\
+
+\begin{center}
+\textbf{Lists}
+\end{center}
+A list is a collection of objects separated by commas and enclosed in brackets.\\
+\verb"gap> l=[2,3,1,4,5,7,6];"\\
+Lists in GAP will grow and shrink on command.  We can add to a list:\\
+\verb"gap> a:=(1,2,3)(6,7);"\\
+\verb"gap> list:=[()];"\\
+\verb"gap> a in list;"\\
+\verb"false"\\
+\verb"gap> Add(list, a);"\\
+\verb"gap> list;"\\
+\verb"[(), (1,2,3)(6,7)]"\\
+The command \verb"PermList(l)" will give the permutation that moves points as described by the list \verb"l".\\
+\verb"gap> PermList(l);"\\
+\verb"(1,2,3)(6,7)"\\
+We can apply a function to a list.
+\verb"gap> List([1..7], i->i^(1,2,3)(6,7));"\\
+\verb"[2,3,1,4,5,7,6]"\\
+Note that \verb"[1..7]" will give the list of numbers ranging between 1 and 7.  The second argument \verb"i->i^(1,2,3)(6,7)" will apply this function to each thing in the list, returning the resulting list of values.  We could also name the function:\\
+\verb"gap> f:=i->i^(1,2,3)(6,7);"\\
+\verb"gap> List([1..7], f);"\\
+\verb"[2,3,1,4,5,7,6]"\\
+
+We can also form sets in GAP.  A set is a sorted, duplicate-free list.
+
+\begin{center}
+\textbf{Loops}
+\end{center}
+Given a list of permutations we can form their product by means of a for loop instead of writing down the product explicitly.\\
+\verb"gap> a:=(1,2,3)(6,7);"\\
+\verb"gap> list:=[(),a];"\\
+\verb"gap> for b in list do"\\
+\verb">      c:=b*a";\\
+\verb">      if not c in list then Add(list, c);"\\
+\verb">      fi;"
+\verb">    od;"\\
+If we then type in the command \verb"list" we will get a list of all the powers of $a$, i.e., $<a>$.\\
+
+The \verb"for" loop has the syntax:\\
+\verb"for" \emph{var} \verb"in" \emph{list} \verb"do" \emph{statements} \verb"od;"\\
+The effect of the \verb"for" loop is to execute the \emph{statements} for every element of the \emph{list}. A \verb"for" loop is a statement and therefore terminated by a semicolon. The list of statements is enclosed by the keywords \verb"do" and \verb"od" (the reverse of \verb"do"). A \verb"for" loop returns no value so we need to ask for this explicitly.
+
+\begin{center}
+\textbf{Groups}
+\end{center}
+
+Groups are represented by a list of generating elements (permutations, matrices, abstract generators).  They are constructed by the \verb"Group" function.  To create the group generated by the permutations $a=(1,2,5,6)(3,8,7,4)$ and $b=(1,3,5,7)(2,4,6,8)$ we type:\\
+\verb"gap> a:=(1,2,5,6)(3,8,7,4);"\\
+\verb"gap> b:=(1,3,5,7)(2,4,6,8);"\\
+\verb"gap> g8:=Group(a,b);"\\
+\verb"Group([ (1,2,5,6)(3,8,7,4), (1,3,5,7)(2,4,6,8)" ])\\
+The function \verb"Size" can be used to determine the number of elements in a group and the function \verb"Elements" lists all the elements explicitly.  The \verb"Elements" function should be avoided when working with bigger groups.\\
+\verb"gap> Size(g8);"\\
+\verb"8"\\
+\verb"gap> Elements(g8);"\\
+\verb"[ (), (1,2,5,6)(3,8,7,4), (1,3,5,7)(2,4,6,8), (1,4,5,8)(2,7,6,3),"\\
+\verb"(1,5)(2,6)(3,7)(4,8), (1,6,5,2)(3,4,7,8), (1,7,5,3)(2,8,6,4),"\\
+\verb"(1,8,5,4)(2,3,6,7) ]"\\
+We can ask other question about the group using commands like \verb"IsFinite" and \verb"IsAbelian".  We can ask if another group \verb"sub" is a subgroup of \verb"g8" by typing \verb"IsSubgroup(g8, sub)", remembering to write the bigger group first.
+
+\begin{center}
+\textbf{Orbits and Stabilizers}
+\end{center}
+
+The orbit of a point \verb"x" is constructed by the function \verb"Orbit".  The stabilizer of a point \verb"x" is constructed by the function \verb"Stabilizer".  Both functions take the group and the point $x$ as arguments.  For example,\\
+\verb"gap> grp:=Group((1,2,3,4),(1,4));"\\
+\verb"gap> Orbit(grp,2);"\\
+\verb"gap> Stabilizer(grp,2);"\\
+These functions can also take an optional third argument to specify a non-standard  action.  The default action for permutation groups is \verb"OnPoints".  This is a GAP function which could have been defined as\\
+\verb"OnPoints:= function(x, a) return x^a; end;"\\
+It takes a point \verb"x" and a permutation \verb"a" as its argument and returns the image \verb"x^a" of the point under the permutation.  Other actions which are available as GAP functions are:
+\verb"OnSets:= function(Y, a) return Set(List(Y, x->x^a)); end;"\\
+\verb"OnTuples:= function(list, a) return List(list, x->x^a); end;"\\
+So these actions functions are extra arguments which indicate how a group acts on a given set.  Using the group \verb"g8" defined before, we have\\
+\verb"gap> Orbit(g8, [1,2,5,6], OnSets);"\\
+\verb"[[1,2,5,6],[3,4,7,8]]"\\
+\verb"gap> Orbit(g8, [1,2,5,6], OnTuples);"\\
+\verb"[ [1,2,5,6], [2,5,6,1], [3,4,7,8], [5,6,1,2], [4,7,8,3], [8,3,4,7],"\\
+\verb"[6,1,2,5], [7,8,3,4]]"
+
+\begin{center}
+\textbf{Orbit Algorithm}
+\end{center}
+
+The orbit Algorithm computes for a given monoid $G$, generated by a subset $A$ of a monoid $M$ acting on a set $X$, the orbit $x.G$ of a point $x\in X$ as follows:\\
+\begin{enumerate}
+\item $O\leftarrow (x)$
+\item for $y\in O$:
+\item \ \ for $a\in A$:
+\item \ \ \ \ $z\leftarrow y.a$
+\item \ \ \ \ if $z\not\in O$: append $z$ to the list $O$
+\item return $O$.
+\end{enumerate}
+We can enter the orbit algorithm as a GAP function as follows:\\
+\verb"myOrbit:= function(A, x, under)"\\
+\verb"   local a, y, z, orbit;"\\
+\verb"   orbit:= [x];"\\
+\verb"   for y in orbit do"\\
+\verb"      for a in A do"\\
+\verb"         z:= under(y, a);"\\
+\verb"         if not z in orbit then Add(orbit, z); fi;"\\
+\verb"   od; od;"\\
+\verb"   return orbit;"\\
+\verb"end;"
 
 \nocite{*}
 
