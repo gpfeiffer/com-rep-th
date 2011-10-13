@@ -394,6 +394,71 @@ We can enter the orbit algorithm as a GAP function as follows:\\
 \verb"   return orbit;"\\
 \verb"end;"
 
+\begin{center}
+\textbf{Extended Orbit Algorithm}
+\end{center}
+
+Given $A \subseteq Sym(X)$, $x \in X$ compute $\theta = x.G$ for $G = \left\langle A \right\rangle$ and transversal of $G_{x}$ in $G$. 
+\begin{enumerate}
+\item $O \leftarrow (x); t_{x} = id_{x}$
+\item for $y \in O$
+\item \ \ for $a \in A$
+\item \ \ \ \ $z \leftarrow y \cdot a$
+\item \ \ \ \ if $z \not\in O$
+\item \ \ \ \ append $z$ to the list $O$; t_{x} = $t_{y \cdot a}$
+\item return $O$ and $T = \left( t_{y} : Y \in O \right)$
+\end{enumerate}
+
+Now every point in $\theta$ has one arrow leaving each generator:
+
+action graph: vertice $\leftrightarrow \theta$
+arrows: $y \stackrel{a}{\rightarrow} y \cdot a$, $y \in O$, $a \in A$ 
+$B = \left\{ t_{y} \cdot a \cdot t_{y \cdot a}^{- 1} : y \in \theta, a \in A \right\}$
+
+\begin{theorem}
+$G_{x} = \left\langle B \right\rangle$
+\end{theorem}
+
+\begin{proof}
+$B \subseteq G_{x}$ - by construction.
+
+$G_{x} \subseteq \left\lange B \right\rangle$
+$G_{x} = \left\{ t_{y} \cdot a \cdot t_{y \cdot g}^{ - 1 } : y \in \theta, g \in G \right\}$
+
+$y \in G_{x}$ can be written as a product of things in $B$. $g \in G = \left\langle A \right\rangle$, $g = a_{1} \cdot a_{2} \ldots a_{q}$, $a_{i} \in A$. Induction on $q$: if $q = 0$ then $g = id_{x}$. 
+If $q > 0$, $t_{y \cdot g} \cdot t_{y \cdot g}^{- 1} = t_{y \cdot a_{1} \ldots a_{q}} \cdot t_{y \cdot g}^{ - 1}$
+$ = \underbrace{t_{y} \cdot a_{1} \cdot t_{y \cdot a_{1}}}_{ \in B} \cdot \overbrace{t_{y \cdot a_{1}} \cdot \underbrace{a_{2} \ldots a_{q}}_{\text{length } \left( q - 1\right) } \cdot t_{y \cdot g}^{ - 1}}^{\text{these can be written as elements of } B}$
+\end{proof}
+
+\begin{center}
+\textbf{Schier-Sims Algorithm}
+\end{center}
+
+Input: $A \subseteq Sym(X)$. Output: $\| G \|$ for $G = \left\langle A \right\rangle$.
+
+\begin{enumerate}
+\item If $A \subseteq \left\{ id_{x} \right\}$: return 1
+\item Choose $x \in X$ such that $x \cdot a \neq x$ for some $a \in A$
+\item Apply the extended orbit algorithm to $A \cdot x$ to compute orbit $O = x \cdot \left\langle A \right\rangle$ and transversal $T = \left( t_{y} : y \in \theta \right)$
+\item $B \leftarrow$ as in Schier generators.
+\item recursively compute $\| \left\langle B \right\rangle \|.
+\item return $\| \left\langle B \right\rangle \|$ and $\| \theta \|$
+\end{enumerate}
+
+Start with generators $A$ for $G$ Schier-Sims, generators $B$ for $G_{x}$.
+
+$A$ Sims table for G. i.e. a base ( a list of points chosen to be stabilized) and strong generating ( disjoint union of the $T_{i}$) for $G$. 
+
+$$G = G_{x_{1}} \cdot T_{1}$$
+$$G_{x_{1}} = G_{x_{1} \cdot x_{2}} \cdot T_{2}$$
+$$ \vdots$$
+$$G = T_{i} \cdot T_{i - 1} \cdot \ldots \cdot T_{2} \cdot T_{1}$$
+
+Thus each $g \in G$ can be written in a unique way as a product:
+$$g = t_{i} \cdot t_{i - 1} \cdot \ldots \cdot t_{2} \cdot t_{1}, \quad t_{i} \in T_{i}$$
+ $\rightarrow$ Compute the size of $\| G \|$. Decide membership $g \in G$. Loop over elements of $G$ pick a random element from $G$ uniformly find (generators for) intersection with other groups. 
+
+Let $X$ and $Y$ be $G$-sets, then $X \sqcup Y$ and $X \times Y$ are $G$-sets. Denote by $[X]$ the isomorphism type of a $G$-set $X$ (e.g. $[X] = [G/G_{x}]$ if $X \conj_{G} G/G_{x}$). Then the set of all isomorphism types of $G$-sets can be regarded as a ring with addintion. $$[X] + [Y] = [X \sqcup Y]$$ $$[X] \cdot [Y] = [ X \times Y]$$  
 \nocite{*}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
