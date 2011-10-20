@@ -302,6 +302,87 @@ This multiplication is well-defined, associative, distributive, and commutative.
 Let $R$ be a commutative ring and $D$ an integral domain.  Then any set of distinct ring homomorphisms $\lambda_i:R\rightarrow D$ is linearly independent over $D$.
 \end{lemma}
 
+What sort of ring is $B(G) = \left\langle [G/H] : H \leq G \right\rangle$?
+$R = B(G)$ and $D = \mathbb{Z}$
+
+\textbf{special case:}
+Let $R = V: \mathbb{C}$-algebra: $\mathbb{C}$-vectorspace with a notion of multiplication defined, e.g. $n \times n$ matrices.
+Let $D$ be the field of complex numbers i.e. $D = \mathbb{C}$. $C$-homomorphisms $V \rightarrow \mathbb{C} = V^{\ast}$ the duel space of $V$. Ring-homomorphisms: $V \rightarrow \mathbb{C}$ are those $\lambda \in V^{\ast}$ which addtionally satisfy $\lambda (ab) = \lambda(a) \lambda(b)$ and $\lambda(1_{V}) = 1_{\mathbb{C}}$.
+
+Linear Algebra: $V^{\ast}$ has a distinguished basis consisting of ring homomorphisms, $\lambda_{1}, \ldots, \lambda_{n}$. $\Rightarrow$ basis of $V: e_{1}, \ldots, e_{2}$, $\lambda_{i} (e_{j}) = \delta_{ij} = \begin{cases}
+                                                                                                                                             1 & \mbox{if } i = j;\\
+                                                                                                                                             0 & \mbox{otherwise}\\
+                                                                                                                                          \end{cases}.$
+
+Check that $e_{i}^{2} = e_{i}$:
+$v \in V: v = \sum{\alpha_{i}}{e_{i}}.$
+$\lambda_{j} (v) = \alpha_{j}.$
+$e_{i}^{2} = \sum{\alpha_{i}}{e_{i}}.$
+$\lambda_{j} (e_{i}^{2}) = \lambda_{j} (e_{i}) \lambda_{j} (e_{i})$
+$ = \delta_{ij}^{2} = \delta_{ij}$ since $i = j$, $\delta_{ij} = 1.$
+
+Now check if $e_{i} e_{k}$ if $i \neq k$.
+$\lambda_{j} (e_{i} e_{k}) = \lambda_{j} (e_{i}) \lambda_{j} (e_{k}) = \delta_{ij} \delta_{ik} = \begin{cases}
+                                                                                                                                                            1 & \mbox{if } i = j= k\\
+                                                                                                                                                            0 &\mbox{otherwise}\\
+                                                                                                                                                         \end{cases}$
+$\Rightarrow e_{i} e_{k} = 0$.
+
+Note: $\sum{e_{i}} = 1$. The set of $\left\{ e_{i} \right\}$ form a complete set of orthogonal idempotents of $V$. Let $a = \sum{\alpha_{i}}{e_{i}}$ and $b = \sum{\beta_{i}}{e_{i}}$ then $ab = \sum{\alpha_{i} \beta_{i}}{e_{i}}$. $e_{i}$ is the standard basis of $V$. $a = \sum{\alpha_{i}}{e_{i}} = \left( \alpha_{1}, \alpha_{2}, \ldots, \alpha_{n} \right)$. 
+
+$V \cong \mathbb{C}^{n}$ with componentwise addition and multiplication.
+
+\begin{lemma}
+$R$ a commutative ring, $D$ an integral domain. Then any set of distinct ring homomorphisms $\lambda_{i} : R \rightarrow D$ is linearly independent over $D$. 
+\end{lemma}
+
+\begin{proof}
+Suppose $\sum_{i = 1}^{m} {a_{i}}{\lambda_{i}} = 0$, $a_{i} \in D \setminus \left\{ 0 \right\}$ and $m$ choosen to be minimal. 
+$m = 1$ is impossible. Take $a_{1} \lambda(r) = 0$ which implies $a = 0$ or $\lambda(r) = 0$ which cannot happen. Pick $y \in R$ such that $\lambda_{1} (y) \neq \lambda_{2} (y)$. Then for all $x \in R$, $0 =  \sum^{m}_{i = 1} {a_{i}}{\lambda_{i} (xy)} = \sum^{m}_{i = 1} {a_{i}} {\lambda_{i} (x) \lambda_{i} (y)}$. $\sum^{m}_{i = 2} \underbrace{a_{i} \left(\lambda_{i}(y) - \lambda_{i} (y) \right)}_{a^{'}_{i}} \lambda_{i} (x) = 0$, $a^{'}_{2} = 0$. This is a relation with strictly fewer terms, a contradiction since $m$ was choosen to be minimal.
+$$\sum^{m}_{i = 1} { a_{i}} {\lambda_{i} (y) \lambda_{i} (x)} - \lambda_{1} (y) \sum^{m}_{i = 2} {a_{i}}$$
+$$\underbrace{\sum^{m}_{i = 1} {a_{i}}{\lambda_{i}(y) \lambda_{i}(x)}}_{ = 0} - \lambda_{1}(y) \underbrace{\sum^{m}_{i = 1} {a_{i}}{\lambda_{i}}}_{ = 0} (x)$$
+\end{proof}
+
+Find $\lambda: B(G) \rightarrow \mathbb{Z}$
+$$\lambda_{1}: [x] \mapsto \# X = \left| X \right|$$
+$$[y] \mapsto \# Y$$
+$$[x] \cdot [y] = [x \times y] \mapsto \# \left(X \times Y \right)$$ 
+
+More: $H \leq G$: let $X$ be a $G$-set, 
+$$Fix_{x} \left( H \right) = \left\{ x \in X : x \cdot h = x \text{ for all } h \in H \right\}$$
+Claim: $Fix_{X \times Y} (H) = Fix_{X} (H) \times Fix_{Y} (H)$
+$$\Rightarrow \left| Fix_{X \times Y} (H) \right| = \left| Fix_{X}(H) \right| \cdot \left|Fix_{Y} (H) \right|$$
+$$\Rightarrow \lambda_{H}:= [X] \mapsto \left| Fix_{x}(H) \right|$$
+$$\lambda_{H} = \lambda_{H^{'}} \Leftrightarrow H \sim_{G} H^{'}$$
+
+\begin{example}
+Let $G$ be the dihedral group of order 8, i.e. $G = D_{8}$ . Once again the subgroup lattice is:
+$$\xymatrix{&& G \ar@{-}[dl] \ar@{-}[d] \ar@{-}[dr]\\
+& \langle\beta,\gamma^2\rangle \ar@{-}[dl] \ar@{-}[d] \ar@{-}[dr] & \langle\gamma\rangle \ar@{-}[d] & \langle\alpha,\gamma^2\rangle \ar@{-}[dl] \ar@{-}[d] \ar@{-}[dr] \\
+\langle\beta'\rangle \ar@{-}[drr] & \langle\beta\rangle \ar@{-}[dr] & \langle\gamma^2\rangle \ar@{-}[d] & \langle\alpha\rangle \ar@{-}[dl] & \langle\alpha'\rangle \ar@{-}[dll] \\
+&& 1}$$
+
+\begin{table*}[h]
+    \centering\
+    \begin{tabular}{|c | c  c  c  c  c  c  c  c |}
+    \hline
+    $G/ 1$ & 8 & &  & & & & & \\
+    $G / \left\langle \alpha \right\rangle$ & 4 & 2& & & & & & \\
+    $G / \left\langle \beta \right\rangle$  & 4 & 0 & 2 & & & & & \\
+    $G / \left\langle \gamma^{2} \right\rangle$ & 4 & 0 & 0 & 4 & & & & \\
+    $G / \left\langle \gamma \right\rangle$ & 2 & 0 & 0 & 2 & 2 & & & \\
+    $G / \left\langle \alpha, \gamma^{2} \right\rangle$ & 2 & 2 & 0 & 2& 0 & 2 & & \\
+    $G / \left\langle \beta, \gamma^{2} \right\rangle$ & 2 & 0 & 2 & 0 & 2 & 0 & 2 & \\
+    $G / G$ & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1\\
+    \hline
+    $ $ & $1$ & $ \left\langle \alpha \right\rangle$ & $\left\langle \beta \right\rangle$ & $\left\langle \gamma^{2} \right\rangle$ & $\left\langle \gamma \right\rangle$ & $\left\langle \alpha, \gamma^{2} \right\rangle$ & $\left\langle \beta, \gamma^{2} \right\rangle$ & $G$\\[1ex]
+    \hline
+    \end{tabular}
+\end{table*}
+
+This is the base change matrix between the standard basis of $\mathbb{Z}^{m}$ and the basis of transitive $G$-sets of $B(G)$.
+\end{example}
+
 \section{GAP}
 GAP is a system for computational algebra, with an emphasis on group theory.  It provides a programming language which is easy to learn and understand, so it doesn't get in the way of the mathematics.  GAP is an interactive system. It continuously executes a read evaluate print loop.\\
 
