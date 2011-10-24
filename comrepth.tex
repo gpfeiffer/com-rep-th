@@ -270,6 +270,7 @@ Thus $f$ is a $G$-map.
 \end{itemize}
 
 \begin{example}
+\label{D8}
 Let $G=D_8$ which is the group of all symmetries of the square:
 $$\xymatrix{^1{\bullet} \ar@{-}[r] \ar@{-}[d] & {\bullet}^2 \\ _4{\bullet} & {\bullet}_3 \ar@{-}[l] \ar@{-}[u]}$$
 i.e., $G=\langle\gamma,\beta,\alpha\rangle$ where $\gamma=(1,2,3,4)$ is a rotation, $\beta=(1,2)(3,4)$ is a reflection without fixed points, and $\alpha=(1,3)$ is a reflection with fixed points.  The subgroup lattice of $D_8$ is:
@@ -328,17 +329,17 @@ $\lambda_{j} (e_{i} e_{k}) = \lambda_{j} (e_{i}) \lambda_{j} (e_{k}) = \delta_{i
                                                                                                                                                          \end{cases}$
 $\Rightarrow e_{i} e_{k} = 0$.
 
-Note: $\sum{e_{i}} = 1$. The set of $\left\{ e_{i} \right\}$ form a complete set of orthogonal idempotents of $V$. Let $a = \sum{\alpha_{i}}{e_{i}}$ and $b = \sum{\beta_{i}}{e_{i}}$ then $ab = \sum{\alpha_{i} \beta_{i}}{e_{i}}$. $e_{i}$ is the standard basis of $V$. $a = \sum{\alpha_{i}}{e_{i}} = \left( \alpha_{1}, \alpha_{2}, \ldots, \alpha_{n} \right)$. 
+Note: $\sum{e_{i}} = 1$. The set of $\left\{ e_{i} \right\}$ form a complete set of orthogonal idempotents of $V$. Let $a = \sum{\alpha_{i}}{e_{i}}$ and $b = \sum{\beta_{i}}{e_{i}}$ then $ab = \sum{\alpha_{i} \beta_{i}}{e_{i}}$. $e_{i}$ is the standard basis of $V$. $a = \sum{\alpha_{i}}{e_{i}} = \left( \alpha_{1}, \alpha_{2}, \ldots, \alpha_{n} \right)$.
 
 $V \cong \mathbb{C}^{n}$ with componentwise addition and multiplication.
 
 \begin{lemma}
-$R$ a commutative ring, $D$ an integral domain. Then any set of distinct ring homomorphisms $\lambda_{i} : R \rightarrow D$ is linearly independent over $D$. 
+$R$ a commutative ring, $D$ an integral domain. Then any set of distinct ring homomorphisms $\lambda_{i} : R \rightarrow D$ is linearly independent over $D$.
 \end{lemma}
 
 \begin{proof}
-Suppose $\sum_{i = 1}^{m} {a_{i}}{\lambda_{i}} = 0$, $a_{i} \in D \setminus \left\{ 0 \right\}$ and $m$ choosen to be minimal. 
-$m = 1$ is impossible. Take $a_{1} \lambda(r) = 0$ which implies $a = 0$ or $\lambda(r) = 0$ which cannot happen. Pick $y \in R$ such that $\lambda_{1} (y) \neq \lambda_{2} (y)$. Then for all $x \in R$, $0 =  \sum^{m}_{i = 1} {a_{i}}{\lambda_{i} (xy)} = \sum^{m}_{i = 1} {a_{i}} {\lambda_{i} (x) \lambda_{i} (y)}$. $\sum^{m}_{i = 2} \underbrace{a_{i} \left(\lambda_{i}(y) - \lambda_{i} (y) \right)}_{a^{'}_{i}} \lambda_{i} (x) = 0$, $a^{'}_{2} = 0$. This is a relation with strictly fewer terms, a contradiction since $m$ was choosen to be minimal.
+Suppose $\sum_{i = 1}^{m} {a_{i}}{\lambda_{i}} = 0$, $a_{i} \in D \setminus \left\{ 0 \right\}$ and $m$ chosen to be minimal.
+$m = 1$ is impossible. Take $a_{1} \lambda(r) = 0$ which implies $a = 0$ or $\lambda(r) = 0$ which cannot happen. Pick $y \in R$ such that $\lambda_{1} (y) \neq \lambda_{2} (y)$. Then for all $x \in R$, $0 =  \sum^{m}_{i = 1} {a_{i}}{\lambda_{i} (xy)} = \sum^{m}_{i = 1} {a_{i}} {\lambda_{i} (x) \lambda_{i} (y)}$. $\sum^{m}_{i = 2} \underbrace{a_{i} \left(\lambda_{i}(y) - \lambda_{i} (y) \right)}_{a^{'}_{i}} \lambda_{i} (x) = 0$, $a^{'}_{2} = 0$. This is a relation with strictly fewer terms, a contradiction since $m$ was chosen to be minimal.
 $$\sum^{m}_{i = 1} { a_{i}} {\lambda_{i} (y) \lambda_{i} (x)} - \lambda_{1} (y) \sum^{m}_{i = 2} {a_{i}}$$
 $$\underbrace{\sum^{m}_{i = 1} {a_{i}}{\lambda_{i}(y) \lambda_{i}(x)}}_{ = 0} - \lambda_{1}(y) \underbrace{\sum^{m}_{i = 1} {a_{i}}{\lambda_{i}}}_{ = 0} (x)$$
 \end{proof}
@@ -346,14 +347,23 @@ $$\underbrace{\sum^{m}_{i = 1} {a_{i}}{\lambda_{i}(y) \lambda_{i}(x)}}_{ = 0} - 
 Find $\lambda: B(G) \rightarrow \mathbb{Z}$
 $$\lambda_{1}: [x] \mapsto \# X = \left| X \right|$$
 $$[y] \mapsto \# Y$$
-$$[x] \cdot [y] = [x \times y] \mapsto \# \left(X \times Y \right)$$ 
+$$[x] \cdot [y] = [x \times y] \mapsto \# \left(X \times Y \right)$$
 
-More: $H \leq G$: let $X$ be a $G$-set, 
+More: $H \leq G$: let $X$ be a $G$-set,
 $$Fix_{x} \left( H \right) = \left\{ x \in X : x \cdot h = x \text{ for all } h \in H \right\}$$
 Claim: $Fix_{X \times Y} (H) = Fix_{X} (H) \times Fix_{Y} (H)$
 $$\Rightarrow \left| Fix_{X \times Y} (H) \right| = \left| Fix_{X}(H) \right| \cdot \left|Fix_{Y} (H) \right|$$
 $$\Rightarrow \lambda_{H}:= [X] \mapsto \left| Fix_{x}(H) \right|$$
 $$\lambda_{H} = \lambda_{H^{'}} \Leftrightarrow H \sim_{G} H^{'}$$
+
+\begin{definition}
+$\lambda_H([X])$ is called the \emph{mark} of $H$ on $X$.  The \emph{table of marks} of $G$ is the matrix $(\lambda_H([G/K]))_{K, H\in\mathcal{S}}$, where $\mathcal{S}=\{H_1,\ldots,H_l\}$ is a transversal of conjugacy classes of subgroups of $G$.  We denote the table of marks of $G$ by $M(G)$.
+\end{definition}
+
+For $K, H\leq G$ we have
+$$\lambda_H([G/K])=|Fix_{G/K}(H)|=|N_G(K):K|\cdot\sharp\{K^g\geq H, g\in G\}.$$
+In particular, for $K=H$,
+$$\underbrace{\lambda_H([G/H])}_{\textrm{diagonal entry of table of marks}}=|N_G(H):H|=\underbrace{|G:H|}_{\lambda_1}/\underbrace{|G:N_G(H)|}_{\sharp\textrm{ conjugates of }H}.$$
 
 \begin{example}
 Let $G$ be the dihedral group of order 8, i.e. $G = D_{8}$ . Once again the subgroup lattice is:
@@ -382,6 +392,36 @@ $$\xymatrix{&& G \ar@{-}[dl] \ar@{-}[d] \ar@{-}[dr]\\
 
 This is the base change matrix between the standard basis of $\mathbb{Z}^{m}$ and the basis of transitive $G$-sets of $B(G)$.
 \end{example}
+
+\begin{theorem}[Burnside]
+Define $\beta:B(G)\rightarrow\bigoplus_{H\in\mathcal{S}}\mathbb{Z}$, $[X]\mapsto(\lambda_H([X]))_{H\in\mathcal{S}}$.  Then $\beta$ is an injective ring homomorphism.
+
+\begin{proof}
+Clearly $\beta$ is a ring homomorphism.  For $x\in B(G)$, $x=\sum_{H\in\mathcal{S}}a_H[G/H]$.  Then $\beta(x)=(a_H)_{H\in\mathcal{S}}\cdot M(G)$.  The matrix $M(G)$ is lower triangle $\Rightarrow$ the diagonal is not zero $\Rightarrow$ the determinant is not zero $\Rightarrow\ M(G)$ is invertible.  It follows that $\beta$ is injective.
+\end{proof}
+\end{theorem}
+
+We return to Example \ref{D8}, with $G=D_8$ acting on $X=\{(a,b)\in\mathbb{Z}^2:|a|,|b|\leq2\}$.
+$$\xymatrix{{\bullet} & {\bullet} & {\bullet} & {\bullet} & {\bullet} \\
+{\bullet} & {\bullet} & {\bullet} & {\bullet} & {\bullet} \\
+{\bullet} & {\bullet} & {\bullet} & {\bullet} & {\bullet} \\
+{\bullet} & {\bullet} & {\bullet} & {\bullet} & {\bullet} \\
+{\bullet} & {\bullet} & {\bullet} & {\bullet} & {\bullet}}$$
+We want to write $X=\sum a_H[G/H]$ so we need to find the $a_H$.  We have $\beta(X)=(25,5,5,1,1,1,1,1)$.  This is the impression of $G$ on $X$.  Using this, we can write:
+$$[X]=[G/G]+[G/1]+2[G/\langle\alpha\rangle]+2[G/\langle\beta\rangle].$$
+
+\begin{center}
+\textbf{Summary}
+\end{center}
+\begin{itemize}
+\item $G$-sets are unions of transitive ones.
+\item Isomorphism types of transitive $G$-sets are in bijection with conjugacy classes of subgroups.
+\item Isomorphism types form a ring $B(G)$ with respect to $\sqcup$ and $\times$.
+\item $\beta:B(G)\rightarrow\mathbb{Z}^m$ is a ring homomorphism with the table of marks $M(G)$ as its matrix, relative to the basis $\{[G/H], H\in\mathcal{S}\}$ of $B(G)$ and the standard basis of $\mathbb{Z}^m$.
+\item $\beta$ is injective, but is not surjective in general.
+\item $\beta$ has finite co-kernel $\mathbb{Z}^m/im(\beta)$ of size $\prod_{H\in\mathcal{S}}|N_G(H):H|$
+\end{itemize}
+
 
 \section{GAP}
 GAP is a system for computational algebra, with an emphasis on group theory.  It provides a programming language which is easy to learn and understand, so it doesn't get in the way of the mathematics.  GAP is an interactive system. It continuously executes a read evaluate print loop.\\
