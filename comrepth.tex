@@ -23,6 +23,14 @@
 
 \renewcommand{\emptyset}{\varnothing}
 
+\DeclareMathOperator{\Aut}{\mathsf{Aut}}
+\DeclareMathOperator{\Fix}{\mathsf{Fix}}
+\DeclareMathOperator{\End}{\mathsf{End}}
+\DeclareMathOperator{\Sym}{\mathsf{Sym}}
+\DeclareMathOperator{\GL}{\mathsf{GL}}
+
+\newcommand{\Size}[1]{\left| #1 \right|}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 
@@ -35,36 +43,36 @@
 \label{sec:intro}
 
 Representation theory of finite groups is concerned with the ways of writing a group $G$ as a group of automorphisms and being able to analyze the group in terms of these automorphisms.\\
-If $X$ is a structure then we have $End(X)=\{f:X\rightarrow X$, $f$ compatible with structure$\}$.  The set of automorphisms is given by $Aut(X)=\{f\in End(X)$, $f$ invertible$\}$.  $Aut(X)$ is a groups under composition, as it satisfies the group axioms:
+If $X$ is a structure then we have $\End(X)=\{f:X\rightarrow X$, $f$ compatible with structure$\}$.  The set of automorphisms is given by $\Aut(X)=\{f\in \End(X)$, $f$ invertible$\}$.  $\Aut(X)$ is a groups under composition, as it satisfies the group axioms:
 \begin{itemize}
-\item compositions of automorphisms are automorphisms; \item composition of maps is associative; \item id$_X$ is the identity; \item $f\in$ Aut$(X)$ is invertible by definition.
+\item compositions of automorphisms are automorphisms; \item composition of maps is associative; \item id$_X$ is the identity; \item $f\in \Aut(X)$ is invertible by definition.
 \end{itemize}
 A representation realises a group $G$ as a group of automorphisms of some structure $X$.  It associates to each element $a\in G$ an automorphism of $X$ in a way that is compatible with the multiplication in $G$.
 
 \begin{definition}
-A \emph{representation} of a group $G$ is a homomorphism $\phi:G\rightarrow Aut(X)$ for some structure $X$.  For any representation we have
+A \emph{representation} of a group $G$ is a homomorphism $\phi:G\rightarrow \Aut(X)$ for some structure $X$.  For any representation we have
 \begin{itemize}
 \item $\phi(a^{-1})=\phi(a)^{-1}$; \item $\phi(1)=id_X$; \item $\phi(ab)=\phi(a)\phi(b)$.
 \end{itemize}
 \end{definition}
 
 \begin{example}
-Let $X=\{1,\ldots,n\}$ where $n\in\mathbb{N}$, ie. $X$ is a finite set.  Then $End(X)=\{f:x\rightarrow X\}=X^X=X^n$ and $|End(X)|=n^n$.  We have $Aut(X)=Sym(X)=Sym_n$, the symmetric group whose elements are all the permutations of $X$, with $|Aut(X)|=n!$.  The permutation representation is $\phi:G\rightarrow Sym(X)$.
+Let $X=\{1,\ldots,n\}$ where $n\in\mathbb{N}$, ie. $X$ is a finite set.  Then $\End(X)=\{f:x\rightarrow X\}=X^X=X^n$ and $\Size{\End(X)}=n^n$.  We have $\Aut(X)=\Sym(X)=\Sym_n$, the symmetric group whose elements are all the permutations of $X$, with $\Size{\Aut(X)}=n!$.  The permutation representation is $\phi:G\rightarrow \Sym(X)$.
 \end{example}
 
 \begin{example}
-Let $X=\mathbb{F}^n$, a vector space over a field $\mathbb{F}$.  Then $End(X)=\mathbb{F}^{n\times n}$ and if $|\mathbb{F}|=q$ then $|End(X)|=q^{n^2}$.  We have Aut$(X)=GL(X)=GL_n(\mathbb{F})$, the general linear group of all invertible matrices over $\mathbb{F}$.  In this case,
+Let $X=\mathbb{F}^n$, a vector space over a field $\mathbb{F}$.  Then $\End(X)=\mathbb{F}^{n\times n}$ and if $\Size{\mathbb{F}}=q$ then $\Size{\End(X)}=q^{n^2}$.  We have $\Aut(X)=\GL(X)=\GL_n(\mathbb{F})$, the general linear group of all invertible matrices over $\mathbb{F}$.  In this case,
 \begin{align*}
-|GL_n(\mathbb{F})| &= (q^n-1)(q^n-q)(q^n-q^2)\ldots(q^n-q^{n-1})\\
+\Size{\GL_n(\mathbb{F})} &= (q^n-1)(q^n-q)(q^n-q^2)\ldots(q^n-q^{n-1})\\
 &= q^{n\choose 2}\prod_{i=1}^n(q^i-1).
 \end{align*}
-The matrix representation is $\phi:G\rightarrow GL_n(\mathbb{F})$.
+The matrix representation is $\phi:G\rightarrow \GL_n(\mathbb{F})$.
 \end{example}
 
 Finding \textbf{one} representation of a group gives a concrete description of the group, allowing us to perform explicit calculations with its elements.  Classifying \textbf{all} representations provides structural information about the group and yields general results which are otherwise very difficult to prove.
 
 \begin{example}
-Let $X = G$. $Aut(G) =$ all invertible group homomorphisms $f: G \rightarrow G$.
+Let $X = G$. $\Aut(G) =$ all invertible group homomorphisms $f: G \rightarrow G$.
 \end{example}
 
 \begin{example}
@@ -72,7 +80,7 @@ $G = \mathbb{Z}_{n} = \mathbb{Z} / n \mathbb{Z} = \left\{ 0, \ldots , n - 1 \rig
 $+_{n}$ and $\cdot_{n}$ are taken modulo n:
 $a +_{n} b := ( a + b ) mod n$ for $a, b \in \mathbb{Z}_{n}$
 $\left( \mathbb{Z}_{n}, +_{n} \right)$ is a commutative group. We want to find
-$End(X)$
+$\End(X)$
 Thus we need to find all homomorphisms $f: \mathbb{Z}_{n} \rightarrow \mathbb{Z}_{n}$.
 
 
@@ -83,22 +91,22 @@ $$ = \underbrace{f(1) + \ldots + f(1)}_{a \text{ times}}$$
 
 $f$ is determined by choosing $f(1)$, any choice in $\mathbb{Z}_{n}$ is possible. Then $f$ is multiplication by $f(1)$.
 
-$$End(X) = \left\{ X \mapsto X \cdot c : c \in \mathbb{Z}_{n} \right\}$$
-$$Aut(X) = \mathbb{Z}_{n}^{\ast} = \left\{ c \in \mathbb{Z}_{n} : gcd ( c, n ) = 1 \right\}$$
+$$\End(X) = \left\{ X \mapsto X \cdot c : c \in \mathbb{Z}_{n} \right\}$$
+$$\Aut(X) = \mathbb{Z}_{n}^{\ast} = \left\{ c \in \mathbb{Z}_{n} : gcd ( c, n ) = 1 \right\}$$
 \end{example}
 
 \begin{example}
 The automorphisms of a permutation.
 $X = \left\{ 1, \ldots, n \right\}, R \subseteq X^{2}$ is a binary relation (structure on $X$).
-$$End(X, R) = \left\{ f: X \rightarrow X, x R y \Rightarrow f(x) R f(y) \right\}$$
-$$Aut(X) = \left\{ \text{permutations in } End(X) \right\}$$
+$$\End(X, R) = \left\{ f: X \rightarrow X, x R y \Rightarrow f(x) R f(y) \right\}$$
+$$\Aut(X) = \left\{ \text{permutations in } \End(X) \right\}$$
 
 A permutation of $X$ is a binary relation:
 \begin{itemize}
 \item As a function $x \mapsto x^{\alpha}$:
-$$\rightarrow Aut( \alpha ) = \left\{\text{ individual cycles, swap cycles of the same length} \right\}.$$
-\noindent Different ways of writing $\alpha$ in a prescribed cycle shape ($ \text{Centralizer of } \alpha \in Sym_{n}$).
-\item Total order on $X \left( \text{ write $\alpha$ as an image list}: \begin{pmatrix}1^{\alpha} & 2^{\alpha} & \ldots & n^{\alpha} \end{pmatrix} \rightarrow Aut(X) = 1 \right).$
+$$\rightarrow \Aut( \alpha ) = \left\{\text{ individual cycles, swap cycles of the same length} \right\}.$$
+\noindent Different ways of writing $\alpha$ in a prescribed cycle shape ($ \text{Centralizer of } \alpha \in \Sym_{n}$).
+\item Total order on $X \left( \text{ write $\alpha$ as an image list}: \begin{pmatrix}1^{\alpha} & 2^{\alpha} & \ldots & n^{\alpha} \end{pmatrix} \rightarrow \Aut(X) = 1 \right).$
 \end{itemize}
 \end{example}
 
@@ -116,7 +124,7 @@ Recall: a set $G$ together with a binary operation $\ast: G \times G \rightarrow
 \begin{itemize}
 \item Usually $e$ is written $1_{G}$ or 1.
 \item $\left( G, \ast \right)$ is a monoid if it satisfies (1) and (2) above.
-\item $End(X)$ is a monoid.
+\item $\End(X)$ is a monoid.
 \item Let $M$ be a monoid then, $M^{\sharp} = \left\{ a \in M : a \text{ invertible} \right\}$ is a group.
 \end{itemize}
 \end{remark}
@@ -135,7 +143,7 @@ $$\zeta_{n}^{k} \longleftrightarrow k \text{ mod } n$$
 
 \section{$G$-sets}
 \label{sec:G-sets}
-Let $G$ be a finite group.  The idea of this chapter is to study \textbf{actions} of $G$ on sets $X$.  We will see that this is a (more) convenient way to look at permutation representations.  (\textbf{Recall:} a permutation representation of $G$ is a homomorphism $\phi:G\rightarrow Sym(X)$.)
+Let $G$ be a finite group.  The idea of this chapter is to study \textbf{actions} of $G$ on sets $X$.  We will see that this is a (more) convenient way to look at permutation representations.  (\textbf{Recall:} a permutation representation of $G$ is a homomorphism $\phi:G\rightarrow \Sym(X)$.)
 
 \begin{definition}
 Let $X$ be a finite set.  An \emph{action} of $G$ on $X$ is a map $X\times G\rightarrow X$, $(x, a)\mapsto x.a$ such that:
@@ -150,7 +158,7 @@ Let $X$ be a finite set.  An \emph{action} of $G$ on $X$ is a map $X\times G\rig
 \begin{example}
 We give some examples of actions.
 \begin{enumerate}
-\item $Sym(X)$ acts "naturally" on $X$.  We write $x^a$ for the image of $x\in X$ under $a\in Sym(X)$.  Then we can define an action of $Sym(X)$ on $X$ as $x.a:=x^a$.  The product $ab$ of two permutations $a, b\in Sym(X)$ is the result of first applying $a$ and then applying $b$.  By $(A1)$ we have $x^{ab}=x.(ab)=(x.a).b=(x^a)^b$.  For example $(12)(23)=(132)$ as we "read from the left".
+\item $\Sym(X)$ acts "naturally" on $X$.  We write $x^a$ for the image of $x\in X$ under $a\in \Sym(X)$.  Then we can define an action of $\Sym(X)$ on $X$ as $x.a:=x^a$.  The product $ab$ of two permutations $a, b\in \Sym(X)$ is the result of first applying $a$ and then applying $b$.  By $(A1)$ we have $x^{ab}=x.(ab)=(x.a).b=(x^a)^b$.  For example $(12)(23)=(132)$ as we "read from the left".
 \item $G$ acts on itself by right multiplication.  Let $X=G$ and $x.a:=xa$.  Then for $x, a, b\in G$ we have $(x.a).b=(xa).b=(xa)b=x(ab)=x.(ab)$ so $(A1)$ is satisfied.  Also, $x.1_G=x1_G=x$ so $(A2)$ is satisfied.
 \item If we let $X=G$ and $x.a=ax$ then $(A2)$ is clearly satisfied.  For $x, a, b\in G$, $(x.a).b=(ax).b=b(ax)=(ba)x=x.(ba)\neq x.(ab)$.  In this case $(A2)$ is not satisfied, so left multiplication is not an action.\\
     However, we can modify this to make it work, as $G$ acts on $X=G$ by \textbf{inverse} left multiplication, where $x.a=a^{-1}x$.  Again, $(A2)$ is clearly satisfied.  Recall that $(ab)^{-1}=b^{-1}a^{-1}$ for any $a, b\in G$.  Hence, for $x, a, b\in G$ we have $(x.a).b=(a^{-1}x).b=b^{-1}(a^{-1}x)=(b^{-1}a^{-1})x=(ab)^{-1}x=x.(ab)$ so $(A1)$ is satisfied and we have an action.
@@ -168,11 +176,11 @@ A \emph{$G$-set} is a finite set $X$ together with an action of $G$ on $X$.  $G$
 \end{definition}
 
 \begin{theorem}[Action Theorem]
-Suppose $X$ is a $G$-set.  Then $\Phi:G\rightarrow Sym(X)$, $a\mapsto\tilde{a}=(x\mapsto x.a)\in End(X)$ is a permutation representation of $G$ (on $X$).  Conversely, if $X$ is a finite set and $f:G\rightarrow Sym(X)$ is a permutation representation then $X$ is a $G$-set with $a.x=x^{f(a)}$ for all $x\in X$, $a\in G$.
+Suppose $X$ is a $G$-set.  Then $\Phi:G\rightarrow \Sym(X)$, $a\mapsto\tilde{a}=(x\mapsto x.a)\in \End(X)$ is a permutation representation of $G$ (on $X$).  Conversely, if $X$ is a finite set and $f:G\rightarrow \Sym(X)$ is a permutation representation then $X$ is a $G$-set with $a.x=x^{f(a)}$ for all $x\in X$, $a\in G$.
 
 \begin{proof}
-To show that $\Phi:G\rightarrow Sym(X)$, $a\mapsto\tilde{a}=(x\mapsto x.a)\in End(X)$ is a permutation representation of $G$, we need to show that it is a homomorphism.  Let $a, b\in G$, then $\Phi(ab)=\widetilde{ab}=x\mapsto x.(ab)=x\mapsto(x.a).b=(x\mapsto x.a)\cdot(x\mapsto x.b)=\tilde{a}\cdot\tilde{b}=\Phi(a)\Phi(b)$, so $\Phi:G\rightarrow Sym(x)$ is a homomorphism and therefore a permutation representation.\\
-Conversely, we need to show that if $f:G\rightarrow Sym(X)$ is a permutation representation, then $X\times G\rightarrow X$, $x.a\mapsto x^{f(a)}$ is an action.  Let $x\in X$ and $a, b\in G$.  Then $(x.a).b=(x^{f(a)}).b=(x^{f(a)})^{f(b)}=x^{f(a)f(b)}=x^{f(ab)}=x.(ab)$ so $(A1)$ is satisfied.  Also, $x.1=x^{f(1)}=x^1=x$ so $(A2)$ is satisfied.  Therefore we have an action, so $X$ is a $G$-set.
+To show that $\Phi:G\rightarrow \Sym(X)$, $a\mapsto\tilde{a}=(x\mapsto x.a)\in \End(X)$ is a permutation representation of $G$, we need to show that it is a homomorphism.  Let $a, b\in G$, then $\Phi(ab)=\widetilde{ab}=x\mapsto x.(ab)=x\mapsto(x.a).b=(x\mapsto x.a)\cdot(x\mapsto x.b)=\tilde{a}\cdot\tilde{b}=\Phi(a)\Phi(b)$, so $\Phi:G\rightarrow \Sym(x)$ is a homomorphism and therefore a permutation representation.\\
+Conversely, we need to show that if $f:G\rightarrow \Sym(X)$ is a permutation representation, then $X\times G\rightarrow X$, $x.a\mapsto x^{f(a)}$ is an action.  Let $x\in X$ and $a, b\in G$.  Then $(x.a).b=(x^{f(a)}).b=(x^{f(a)})^{f(b)}=x^{f(a)f(b)}=x^{f(ab)}=x.(ab)$ so $(A1)$ is satisfied.  Also, $x.1=x^{f(1)}=x^1=x$ so $(A2)$ is satisfied.  Therefore we have an action, so $X$ is a $G$-set.
 \end{proof}
 \end{theorem}
 
@@ -278,7 +286,7 @@ $$\xymatrix{&& G \ar@{-}[dl] \ar@{-}[d] \ar@{-}[dr]\\
 & \langle\beta,\gamma^2\rangle \ar@{-}[dl] \ar@{-}[d] \ar@{-}[dr] & \langle\gamma\rangle \ar@{-}[d] & \langle\alpha,\gamma^2\rangle \ar@{-}[dl] \ar@{-}[d] \ar@{-}[dr] \\
 \langle\beta'\rangle \ar@{-}[drr] & \langle\beta\rangle \ar@{-}[dr] & \langle\gamma^2\rangle \ar@{-}[d] & \langle\alpha\rangle \ar@{-}[dl] & \langle\alpha'\rangle \ar@{-}[dll] \\
 && 1}$$
-$G$ acts on $X=\{(a,b)\in\mathbb{Z}^2:|a|,|b|\leq2\}$ as follows:
+$G$ acts on $X=\{(a,b)\in\mathbb{Z}^2:\Size{a},\Size{b}\leq2\}$ as follows:
 $$\xymatrix{ {\alpha'} \ar@{-}[ddddddrrrrrr] &&& {\beta}\ar@{-}[dddddd] &&& \\
 & {\bullet} & {\bullet} & {\bullet} & {\bullet} & {\bullet} \\
 & {\bullet} & {\bullet} & {\bullet} & {\bullet} & {\bullet} \\
@@ -345,15 +353,15 @@ $$\underbrace{\sum^{m}_{i = 1} {a_{i}}{\lambda_{i}(y) \lambda_{i}(x)}}_{ = 0} - 
 \end{proof}
 
 Find $\lambda: B(G) \rightarrow \mathbb{Z}$
-$$\lambda_{1}: [x] \mapsto \# X = \left| X \right|$$
+$$\lambda_{1}: [x] \mapsto \# X = \Size{X}$$
 $$[y] \mapsto \# Y$$
 $$[x] \cdot [y] = [x \times y] \mapsto \# \left(X \times Y \right)$$
 
 More: $H \leq G$: let $X$ be a $G$-set,
-$$Fix_{x} \left( H \right) = \left\{ x \in X : x \cdot h = x \text{ for all } h \in H \right\}$$
-Claim: $Fix_{X \times Y} (H) = Fix_{X} (H) \times Fix_{Y} (H)$
-$$\Rightarrow \left| Fix_{X \times Y} (H) \right| = \left| Fix_{X}(H) \right| \cdot \left|Fix_{Y} (H) \right|$$
-$$\Rightarrow \lambda_{H}:= [X] \mapsto \left| Fix_{x}(H) \right|$$
+$$\Fix_{x} \left( H \right) = \left\{ x \in X : x \cdot h = x \text{ for all } h \in H \right\}$$
+Claim: $\Fix_{X \times Y} (H) = \Fix_{X} (H) \times \Fix_{Y} (H)$
+$$\Rightarrow \Size{\Fix_{X \times Y} (H)} = \Size{\Fix_{X}(H)} \cdot \Size{\Fix_{Y} (H)}$$
+$$\Rightarrow \lambda_{H}:= [X] \mapsto \Size{\Fix_{x}(H)}$$
 $$\lambda_{H} = \lambda_{H^{'}} \Leftrightarrow H \sim_{G} H^{'}$$
 
 \begin{definition}
@@ -361,9 +369,9 @@ $\lambda_H([X])$ is called the \emph{mark} of $H$ on $X$.  The \emph{table of ma
 \end{definition}
 
 For $K, H\leq G$ we have
-$$\lambda_H([G/K])=|Fix_{G/K}(H)|=|N_G(K):K|\cdot\sharp\{K^g\geq H, g\in G\}.$$
+$$\lambda_H([G/K])=\Size{\Fix_{G/K}(H)}=|size{N_G(K):K}\cdot\sharp\{K^g\geq H, g\in G\}.$$
 In particular, for $K=H$,
-$$\underbrace{\lambda_H([G/H])}_{\textrm{diagonal entry of table of marks}}=|N_G(H):H|=\underbrace{|G:H|}_{\lambda_1}/\underbrace{|G:N_G(H)|}_{\sharp\textrm{ conjugates of }H}.$$
+$$\underbrace{\lambda_H([G/H])}_{\textrm{diagonal entry of table of marks}}=\Size{N_G(H):H}=\underbrace{\Size{G:H}}_{\lambda_1}/\underbrace{\Size{G:N_G(H)}}_{\sharp\textrm{ conjugates of }H}.$$
 
 \begin{example}
 Let $G$ be the dihedral group of order 8, i.e. $G = D_{8}$ . Once again the subgroup lattice is:
@@ -401,7 +409,7 @@ Clearly $\beta$ is a ring homomorphism.  For $x\in B(G)$, $x=\sum_{H\in\mathcal{
 \end{proof}
 \end{theorem}
 
-We return to Example \ref{D8}, with $G=D_8$ acting on $X=\{(a,b)\in\mathbb{Z}^2:|a|,|b|\leq2\}$.
+We return to Example \ref{D8}, with $G=D_8$ acting on $X=\{(a,b)\in\mathbb{Z}^2:\Size{a},\Size{b}\leq2\}$.
 $$\xymatrix{{\bullet} & {\bullet} & {\bullet} & {\bullet} & {\bullet} \\
 {\bullet} & {\bullet} & {\bullet} & {\bullet} & {\bullet} \\
 {\bullet} & {\bullet} & {\bullet} & {\bullet} & {\bullet} \\
@@ -419,7 +427,7 @@ $$[X]=[G/G]+[G/1]+2[G/\langle\alpha\rangle]+2[G/\langle\beta\rangle].$$
 \item Isomorphism types form a ring $B(G)$ with respect to $\sqcup$ and $\times$.
 \item $\beta:B(G)\rightarrow\mathbb{Z}^m$ is a ring homomorphism with the table of marks $M(G)$ as its matrix, relative to the basis $\{[G/H], H\in\mathcal{S}\}$ of $B(G)$ and the standard basis of $\mathbb{Z}^m$.
 \item $\beta$ is injective, but is not surjective in general.
-\item $\beta$ has finite co-kernel $\mathbb{Z}^m/im(\beta)$ of size $\prod_{H\in\mathcal{S}}|N_G(H):H|$
+\item $\beta$ has finite co-kernel $\mathbb{Z}^m/im(\beta)$ of size $\prod_{H\in\mathcal{S}}\Size{N_G(H):H}$
 \end{itemize}
 
 
@@ -557,7 +565,7 @@ We can enter the orbit algorithm as a GAP function as follows:\\
 \textbf{Extended Orbit Algorithm}
 \end{center}
 
-Given $A \subseteq Sym(X)$, $x \in X$ compute $\theta = x.G$ for $G = \left\langle A \right\rangle$ and transversal of $G_{x}$ in $G$.
+Given $A \subseteq \Sym(X)$, $x \in X$ compute $\theta = x.G$ for $G = \left\langle A \right\rangle$ and transversal of $G_{x}$ in $G$.
 \begin{enumerate}
 \item $O \leftarrow (x); t_{x} = id_{x}$
 \item for $y \in O$
@@ -590,18 +598,18 @@ $ = \underbrace{t_{y} \cdot a_{1} \cdot t_{y \cdot a_{1}}}_{ \in B} \cdot \overb
 \end{proof}
 
 \begin{center}
-\textbf{Schier-Sims Algorithm}
+\textbf{Schreier--Sims Algorithm}
 \end{center}
 
-Input: $A \subseteq Sym(X)$. Output: $\| G \|$ for $G = \left\langle A \right\rangle$.
+Input: $A \subseteq \Sym(X)$. Output: $\Size{G}$ for $G = \left\langle A \right\rangle$.
 
 \begin{enumerate}
 \item If $A \subseteq \left\{ id_{x} \right\}$: return 1
 \item Choose $x \in X$ such that $x \cdot a \neq x$ for some $a \in A$
-\item Apply the extended orbit algorithm to $A \cdot x$ to compute orbit $O = x \cdot \left\langle A \right\rangle$ and transversal $T = \left( t_{y} : y \in \theta \right)$
+\item Apply the extended orbit algorithm to $A \cdot x$ to compute orbit $O = x \cdot \left\langle A \right\rangle$ and transversal $T = \left( t_{y} : y \in O \right)$
 \item $B \leftarrow$ as in Schier generators.
-\item recursively compute $\| \left\langle B \right\rangle \|$.
-\item return $\| \left\langle B \right\rangle \|$ and $\| \theta \|$
+\item recursively compute $\Size{ \left\langle B \right\rangle }$.
+\item return $\Size{\left\langle B \right\rangle} \cdot \Size{O}$
 \end{enumerate}
 
 Start with generators $A$ for $G$ Schier-Sims, generators $B$ for $G_{x}$.
