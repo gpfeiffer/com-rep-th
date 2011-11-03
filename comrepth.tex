@@ -799,6 +799,83 @@ Then $V$ is an $FG$-module with $V\times G\rightarrow V$ defined by $(\sum a_i v
 
 \noindent In particular, if $B$ is a $G$-set then $V$ is an $FG$-module.
 
+\begin{definition}
+Let $V$ be an $F$-space with basis $B=(v_1,\ldots,v_n)$.  If $B$ is a $G$-set then $V$ is an $FG$-module called a \emph{permutation module}.  In this case, the matrix $[g]_B$ is a permutation matrix, it has exactly one non-zero entry 1 in every row and column.
+\end{definition}
+
+\begin{example}
+$G=Sym_4$ acts on $B=\{v_1,\ldots,v_n\}$ via $v_i.g=v_{i.g}$.  If $g=(1,2)$ then
+$$[g]_B=\left(\begin{array}{cccc}
+0 & 1 & 0 & 0 \\
+1 & 0 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1 \\
+\end{array}\right).$$
+Note that $[g^{-1}]_B=[g]_B^T$.  For example, if $g=(1,2,3,4)$ then
+$$[g]_B=\left(\begin{array}{cccc}
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1 \\
+1 & 0 & 0 & 0 \\
+\end{array}\right)\textrm{ and }
+[g]_B^T=\left(\begin{array}{cccc}
+0 & 0 & 0 & 1 \\
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+\end{array}\right).$$
+The matrix $[g]_B^T$ corresponds to $(1,4,3,2)=(1,2,3,4)^{-1}=g^{-1}$.
+\end{example}
+
+\begin{definition}
+Let $X=\{x\}$ and $x.g=x$.  The vector space $V$ with basis $X$ is the \emph{trivial $FG$-module}.  We have $V=\{\lambda x:\lambda\in F\}\cong F^1=F$.
+\end{definition}
+
+\begin{definition}
+Let $X=G$ be acted upon by right multiplication.  The vector space $V$ with basis $X$ is the \emph{regular $FG$-module}.  Denote $V=FG=\{\sum_{g\in G}\alpha_g g:\alpha_g\in F\}$.  We have a linear action $FG\times G\rightarrow FG$.
+\end{definition}
+
+\begin{definition}  The \emph{group algebra} is $FG$ with multiplication defined by
+$$\left(\sum_{g\in G}\alpha_g g\right)\left(\sum_{h\in G}\beta_h h\right)=\sum_{g\in G}\gamma_g g$$.
+\end{definition}
+
+We need to show what $\gamma_g$ is:
+\begin{itemize}
+\item $(\sum_{g\in G}\alpha_g g)h=\sum_{g\in G}\alpha_g\underbrace{(gh)}_k=\sum_{k\in G}\alpha_{kh^{-1}}k=\sum_{g\in g}\alpha_{gh^{-1}} g$.
+\item $(\sum_{g\in G}\alpha_g g)(\sum_{h\in G}\beta_h h) = \sum_{h\in G}\beta_h (\sum_{g\in G}\alpha_g g)h \\
+= \sum_{h\in G}\beta_h (\sum_{g\in G} \alpha_{gh^{-1}} g) = \sum_{g\in G} \underbrace{(\sum_{h\in G} \alpha_{gh^{-1}}\beta_h)}_{\gamma_g} g.$
+\end{itemize}
+
+\textbf{Recall:} A \emph{ring} is a set R equipped with two binary operations $+:R\times R\rightarrow R$ and $\cdot:R\times R\rightarrow R$ such that:
+\begin{itemize}
+\item $(R, +)$ is an abelian group.
+\item $(R, \cdot)$ is a monoid.
+\item Distributivity holds, i.e. $a(b+c)=ab+ac$ and $(a+b)c=ac+bc$ for all $a, b, c\in R$.
+\end{itemize}
+
+\begin{proposition}
+$FG$ is a ring with identity $1\in G$ and $(\lambda r)s=\lambda(rs)=r(\lambda s)$ for all $\lambda\in F$ and all $r, s\in FG$.
+\end{proposition}
+
+\begin{corollary}
+$FG$ is an $F$-algebra, i.e., and $F$-space and a ring at the same time, with $(\lambda r)s=\lambda(rs)=r(\lambda s)$ for all $\lambda\in F$ and all $r, s\in FG$.
+\end{corollary}
+
+Examples of $F$-algebras are polynomials, $n\times n$ matrices, and $End_F(V)$.
+
+\begin{definition}
+Let $A$ be an $F$-algebra and $V$ be an $F$-space with $V\times A\rightarrow V,\ (v,a)\mapsto v.a$.  Then $V$ is an $A$-module if:
+\begin{description}
+\item[(A1)] $v.ab=v.a.b$
+\item[(A2)] $v.1=v$
+\item[(L2)] $(u+v).a=u.a+v.a$
+\item[(L3)] $v.(a+b)=v.a+v.b$
+\end{description}
+\end{definition}
+
+What about $(L1):\ (\lambda v).g=\lambda(v.g)$?\\
+We have $1\in A$ so $F\cong F.1\subseteq A$.  For $\lambda\in F:\ \lambda v=v\lambda=v.(\lambda 1)$.  Then $(A1)$ applies, implying $(L1)$.
+
 \nocite{*}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
