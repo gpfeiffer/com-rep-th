@@ -876,6 +876,165 @@ Let $A$ be an $F$-algebra and $V$ be an $F$-space with $V\times A\rightarrow V,\
 What about $(L1):\ (\lambda v).g=\lambda(v.g)$?\\
 We have $1\in A$ so $F\cong F.1\subseteq A$.  For $\lambda\in F:\ \lambda v=v\lambda=v.(\lambda 1)$.  Then $(A1)$ applies, implying $(L1)$.
 
+$V$ is an $FG$-module if and only if $V$ is an $A$-module, i.e. the two sets of action axioms are compatible. Now we can consider $A$-modules for $A = FG$, or $A = End_{F} (\omega)$.
+
+\begin{center}
+\textbf{Submodules}
+\end{center}
+Let $A$ be an $F$-algebra.
+\begin{definition}
+Let $V$ be an $A$-module. A subset $\omega \subseteq V$ is a submodule of $V$ if:
+\begin{itemize}
+\item $\omega \leq_{F} V$ (subspace).
+\item $w \cdot a \in \omega$ for all $w \in \omega$, $a \in A$.
+\end{itemize}
+notation: $\omega \leq_{A} V$.
+\end{definition}
+
+\begin{example}
+Let $G = D_{8}$. $$V = \left\langle v_{1}, v_{2}, v_{3}, v_{4} \right\rangle_{F},$$ $$\omega = v_{1} + v_{2} + v_{3} + v_{4}$$
+$$\omega \cdot g = \omega$$
+$$\left\langle \omega \right\rangle_{F} \leq_{F} V$$
+\end{example}
+
+\begin{definition}
+$A$-homomorphism: let $V, W$ be $A$-modules. A map $\varphi: V \rightarrow W$ is an $A$-homomorphism from $V$ to $W$ if:
+\begin{itemize}
+\item $\varphi$ is linear.
+\item $\varphi (v \cdot a) = \varphi ( v ) \cdot a$ for all $v \in V$, $a \in A$. 
+\end{itemize}
+\end{definition}
+
+\begin{proposition}
+If $\varphi : V \rightarrow W$ is an $A$-homomorphism then:
+\begin{itemize}
+\item $Ker ( \varphi ) = \left\{ v \in V : \varphi ( v) = 0 \right\}$ 
+\item $Im ( \varphi ) = \left\{ \varphi (v)  : v \in V \right\} \leq_{A} W$
+\end{itemize}
+\end{proposition}
+
+\begin{example}
+$\varphi: V \rightarrow W : v \mapsto 0$ is an $A$-homomorphism. 
+\end{example}
+
+\begin{example}
+$\varphi: V \rightarrow V: v \mapsto \lambda \cdot v$ for some $\lambda \in F$ is an $A$-homomorphism. $Ker ( \varphi ) = 0 \Leftrightarrow \lambda \neq 0$.
+\end{example}
+
+\begin{example}
+$G \rightarrow X $ vectorspace with basis $X$. $W = F$ trivial. $\varphi ( \sum{\lambda_{i}}{x_{i}}) = \sum \lambda_{i}$ defines an $A$-homomorphism with: $Ker ( \varphi ) = \left\{ \sum \lambda_{i} x_{i} : \sum \lambda_{i} = 0 \right\} \leq_{FG} V.$
+\end{example}
+
+An invertible $A$-homomorphism $\varphi: V \rightarrow W$ is called an $A$-isomorphism. Write $V \cong_{A} W$ if there exists an $A$-isomorphism $\varphi: V \rightarrow W$.
+
+\begin{proposition}
+$\cong_{A}$ is an equivalence relation.
+\end{proposition}
+
+\begin{theorem}
+Let $V$ be an $A$-module with basis $B'$. Then $V \cong_{A} W \Leftrightarrow$ the matrix representations $a \mapsto [a]_{B}$ and $a \mapsto [a]_{B'}$ are equivalent.
+\end{theorem}
+
+\begin{center}
+\textbf{New Module from Old}
+\end{center}
+
+Let $V$ and $W$ be $A$-modules with bases $B = (v_{1}, \ldots, v_{n})$ and $B = ( w_{1}, \ldots, w_{n} )$. The (external) direct sum is defined to be $V \oplus W = \left\{ (v, w) : v \in V, w \in W \right\}$. With $(v, w) + (v', w') = (v + v', w + w')$ and $(v, w) \cdot a = (v \cdot a, w \cdot a )$. This is an $A$ module with basis $B \sqcup B'$. 
+
+Tensor product: $V \otimes W = \left\{ \sum v \otimes w \right\}$ with $(v \otimes w ) \cdot a = (v a \otimes w a)$ is an $A$-module with basis $B \times B'$.
+
+The (internal) direct sum decomposition: Let $V$ be an $A$-module with submodules $v_{1}, \ldots, v_{n}$, $v_{i} \neq 0$. Then $V = \oplus v_{i} = v_{1} \oplus \ldots \oplus v_{n}$. If every $v \in V$ can be written uniquely in the form $v = v_{1} + \ldots + v_{n}$ with $v_{i} \in V_{i}$.
+
+\begin{example}
+Let $G = 1$, $V$ an $F$-space with basis $B = (v_{1}, \ldots, v_{n})$. Then as $FG$-module $V = F_{v_{1}} \oplus \ldots \oplus F_{v_{n}}$. 
+\end{example}
+An $A$-module $V$ is:
+\begin{itemize}
+\item simple if 0 and $V$ are its only submodules.
+\item reducible otherwise. 
+\item decomposable if $V = U \oplus W$ with $U \neq 0$ and $W \neq 0$.
+\item indecomposable otherwise.
+\end{itemize} 
+Question: Is an $A$-module reducible if and only if it is decomposable?
+
+\begin{definition}
+An $A$-module $V$ is simple if $0, V \leq_{A} V$ are the only submodules of $V$ (reducible otherwise).
+Decomposable if $V = U \oplus W$ for submodules $0 \neq U, W \leq_{A} V$ (and indecomposable otherwise).
+\end{definition}
+Same notation for the representation $\delta: A \rightarrow End(V)$. In terms of matrices $\delta$ reducible means:
+ \begin{equation*}
+\mbox{$\delta (a )$} = \left[
+\begin{array}{ccc}
+     \delta_{1} (A) & \vline & 0 \\
+     \hline
+     \ast & \vline & \delta_{2} (A) \\
+\end{array}
+\right]
+\end{equation*}
+For non-zero representation $\delta_{1}, \delta_{2}$ of $A$, $0 \neq U \subset_{A} V$ take a basis $u_{1}, \ldots, u_{l}$ of $U$. Extend this to a basis $(u_{1}, \ldots, u_{l}, w_{l+1}, \ldots, w_{n})$ of $V$. If $\delta$ is decomposable: 
+ \begin{equation*}
+\mbox{$\delta (a )$} = \left[
+\begin{array}{ccc}
+     \delta_{1} (A) & \vline & 0 \\
+     \hline
+     0 & \vline & \delta_{2} (A) \\
+\end{array}
+\right]
+\end{equation*}
+$V = U \oplus W$, where $u_{1}, \ldots, u_{l}$ is a basis for $U$ and $w_{l + 1}, \ldots, w_{n}$ is a basis for $W$ and together they form a basis for $V$. 
+
+Question: Is an $A$-module reducible if and only if it is decomposable?
+Answer: It depends: this divides representation theory into ordinary representation theory, to which the answer is yes, and modular representation theory, where the answer is no.
+
+\begin{center}
+\textbf{Simple Modules}
+\end{center}
+An $F$-algebra $V$ finite dinmensional $A$-module.
+
+\begin{theorem}
+(Jordon-H\"{o}lder): Any two composition series $0 = v_{0} <_{A} v_{1} <_{A} \ldots <_{A} v_{n}$ such that $v_{k} / v_{k - 1}$ is simple, have the same length $n$ and the same composition factor up to ordering and isomorphism. 
+\end{theorem}
+As a consequence we can choose a basis of $V$ so that:
+\begin{equation*}
+\mbox{$\delta (a )$} = \left[
+\begin{array}{cccc}
+     \delta_{1} (A) & 0 & \cdots & 0\\
+     \ast & \delta_{2} (A)& \  & \vdots\\
+     \vdots & \  & \ddots & 0 \\
+     \ast & \cdots & \ast & \delta_{n} (A)\\
+\end{array}
+\right]
+\end{equation*}
+where the $\delta_{i}$  are representations on simple factors.
+
+If $A$ (as an $A$-module) has a composition series (which it has if $dimA < \infty$) then $A$ (the algebra) has only finitely many simple modules up to isomorphism, as a consequence of the following lemma:
+\begin{lemma}
+Let $V$ be an $A$-module then:
+\begin{enumerate}
+\item $V$ simple $\Rightarrow V \cong_{A} A / M$ for some maximal right ideal of $A$ (submodules of the regular $A$-module $A$ are right ideals of the ring $A$).
+\item $V$ simple $\Leftrightarrow v \cdot A = V$ for all $0 \neq v \in V$
+\item $V$ simple $\Rightarrow End_{A} (V)$ is a division ring (Schur's lemma).
+\end{enumerate}
+\end{lemma}
+
+ \begin{proof}
+(2) Choose $v \in V$ and consider: $$\varphi: A \rightarrow V$$ $$a \mapsto v \cdot a$$
+and consider $\varphi$ as an $A$-module homomorphism. $V$ simple $\Rightarrow v \cdot A = Im \varphi = \begin{cases} 
+0\\
+V
+\end{cases}$
+$v \neq 0$, $v \cdot 1 = V \in Im \varphi \neq 0$. Hence $v \cdot A = V$ for $v \neq 0$
+Conversely; Suppose $U \neq 0$ is a submoduleof $V$ pick $0 \neq v \in U$, then $V = v \cdot A \leq U \leq V$.
+
+(1) Homomorphism theorem: $$A / Ker \varphi \cong_{A} Im \varphi.$$
+
+(3) Show: non-zero $A$-module homomorphism $\varphi: V \rightarrow V$ are invertible. $V$ simple $$Ker \varphi = \begin{cases} 
+0 & \varphi \mbox{ is invertible}\\
+V & \mbox{then }\varphi = 0
+\end{cases}$$
+If $F$ is algebraically closed: the characteristic polynomial $\chi_{\varphi}$ has a root $\alpha \in F$. $\varphi-\alpha id_{V}$ is not invertible hence 0; $\varphi = \alpha id_{V}. End_{A} (V) \cong F$.
+\end{proof}
+
 \nocite{*}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
