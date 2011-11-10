@@ -10,6 +10,7 @@
 \usepackage[a4paper,margin=1in,includeheadfoot]{geometry}
 \usepackage{amssymb}
 \usepackage[all]{xy}
+\usepackage{enumerate}
 
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{proposition}[theorem]{Proposition}
@@ -627,7 +628,7 @@ $$g = t_{i} \cdot t_{i - 1} \cdot \ldots \cdot t_{2} \cdot t_{1}, \quad t_{i} \i
 
 Let $X$ and $Y$ be $G$-sets, then $X \sqcup Y$ and $X \times Y$ are $G$-sets. Denote by $[X]$ the isomorphism type of a $G$-set $X$ (e.g. $[X] = [G/G_{x}]$ if $X \cong_{G} G/G_{x}$). Then the set of all isomorphism types of $G$-sets can be regarded as a ring with addition. $$[X] + [Y] = [X \sqcup Y]$$ $$[X] \cdot [Y] = [ X \times Y]$$
 
-\section{Matrix Represetations}
+\section{Matrix Representations}
 
 Representing groups as automorphisms of vector spaces. $\alpha \in Aut(X)$, $\alpha: X \rightarrow X$ specify all $\alpha (x)$ if $X$ is a set. $X = V$ sufficient to specify $\alpha (v)$ for $v$ in a basis of $V$. Now we must distinguish between $F$-representations and matrix representations over $F$, where $F$ is a field.
 
@@ -636,10 +637,10 @@ Let $G$ be a group, $F$ a field and $V$ an $F$- vector space of dimension $dim(V
 $GL(V) := Aut_{F} (V) = End_{F}^{\ast} (V)$, where $End_{F} (V) = Hom_{F} (V, V)$. Write $\varphi \in Aut_{F} (V)$ on the right: $v \cdot \varphi = v^{\varphi}$ (rather than $\varphi (v)$). Choose a basis $B = \left( v_{1}, \ldots, v_{n} \right)$ of $V$. $\varphi \in End_{F} (V)$ the matrix $[ \varphi ]_{B} = [ a_{i j} ] \in F^{n \times n}$ defined by $v_{i}^{\varphi}  = \sum_{j = 1}^{n} {a_{ij}}{v_{j}}$, where $i = 1, \ldots, n$ is the matrix of $\varphi$ relative to $B$. Then $[ \  ]_{B} : GL(V) \rightarrow GL_{n} (F) = \left( F^{n \times n} \right)^{\ast}$ defined by $\varphi \mapsto [ \varphi ]_{B}$ is an isomorphism of groups: $[ \varphi \cdot \psi ]_{B} = [ \varphi ]_{B} [ \psi ]_{B}$. $v \in V: [ v ]_{B} = \underbrace{\left( a_{1}, \ldots, a_{n} \right)}_{\text{row vectors}}$ if $v = \sum{a_{i}}{v_{i}}$. $\left[ v^{\varphi} \right]_{B} = [v]_{B} [ \varphi ]_{B}$ is the row convention.
 
 \begin{definition}
-An $F$- representation of $G$ is a homomorphism $G \rightarrow GL(V)$. A matrix representation of $G$ over a field $F$ is a homomorphism where $dim(V) = n$ is the degree of the representation.
+An $F$-representation of $G$ is a homomorphism $G \rightarrow GL(V)$. A matrix representation of $G$ over a field $F$ is a homomorphism where $dim(V) = n$ is the degree of the representation.
 \end{definition}
 
-We prefer matrices fro computational purposes. Given an $F$-representation $\delta: G \rightarrow GL(V)$, and a basis $B$ of $V$ then $[ \  ]_{B} \circ \delta := \delta_{B}$, ($ \delta_{B} (g) = \left[ \delta (g) \right]_{B}$ ) is a matrix representation of $G$.
+We prefer matrices for computational purposes. Given an $F$-representation $\delta: G \rightarrow GL(V)$, and a basis $B$ of $V$ then $[ \  ]_{B} \circ \delta := \delta_{B}$, ($ \delta_{B} (g) = \left[ \delta (g) \right]_{B}$ ) is a matrix representation of $G$.
 
 $\delta$, $\delta^{'}: G \rightarrow GL_{n} (F)$ are equivalent if there exists $T \in GL_{n} (F)$ such that $\delta^{'} (g) = T^{- 1} \delta (g) T$.
 
@@ -901,20 +902,20 @@ $$\left\langle \omega \right\rangle_{F} \leq_{F} V$$
 $A$-homomorphism: let $V, W$ be $A$-modules. A map $\varphi: V \rightarrow W$ is an $A$-homomorphism from $V$ to $W$ if:
 \begin{itemize}
 \item $\varphi$ is linear.
-\item $\varphi (v \cdot a) = \varphi ( v ) \cdot a$ for all $v \in V$, $a \in A$. 
+\item $\varphi (v \cdot a) = \varphi ( v ) \cdot a$ for all $v \in V$, $a \in A$.
 \end{itemize}
 \end{definition}
 
 \begin{proposition}
 If $\varphi : V \rightarrow W$ is an $A$-homomorphism then:
 \begin{itemize}
-\item $Ker ( \varphi ) = \left\{ v \in V : \varphi ( v) = 0 \right\}$ 
+\item $Ker ( \varphi ) = \left\{ v \in V : \varphi ( v) = 0 \right\}$
 \item $Im ( \varphi ) = \left\{ \varphi (v)  : v \in V \right\} \leq_{A} W$
 \end{itemize}
 \end{proposition}
 
 \begin{example}
-$\varphi: V \rightarrow W : v \mapsto 0$ is an $A$-homomorphism. 
+$\varphi: V \rightarrow W : v \mapsto 0$ is an $A$-homomorphism.
 \end{example}
 
 \begin{example}
@@ -922,7 +923,7 @@ $\varphi: V \rightarrow V: v \mapsto \lambda \cdot v$ for some $\lambda \in F$ i
 \end{example}
 
 \begin{example}
-$G \rightarrow X $ vectorspace with basis $X$. $W = F$ trivial. $\varphi ( \sum{\lambda_{i}}{x_{i}}) = \sum \lambda_{i}$ defines an $A$-homomorphism with: $Ker ( \varphi ) = \left\{ \sum \lambda_{i} x_{i} : \sum \lambda_{i} = 0 \right\} \leq_{FG} V.$
+$G \rightarrow X $ vector space with basis $X$. $W = F$ trivial. $\varphi ( \sum{\lambda_{i}}{x_{i}}) = \sum \lambda_{i}$ defines an $A$-homomorphism with: $Ker ( \varphi ) = \left\{ \sum \lambda_{i} x_{i} : \sum \lambda_{i} = 0 \right\} \leq_{FG} V.$
 \end{example}
 
 An invertible $A$-homomorphism $\varphi: V \rightarrow W$ is called an $A$-isomorphism. Write $V \cong_{A} W$ if there exists an $A$-isomorphism $\varphi: V \rightarrow W$.
@@ -939,22 +940,22 @@ Let $V$ be an $A$-module with basis $B'$. Then $V \cong_{A} W \Leftrightarrow$ t
 \textbf{New Module from Old}
 \end{center}
 
-Let $V$ and $W$ be $A$-modules with bases $B = (v_{1}, \ldots, v_{n})$ and $B = ( w_{1}, \ldots, w_{n} )$. The (external) direct sum is defined to be $V \oplus W = \left\{ (v, w) : v \in V, w \in W \right\}$. With $(v, w) + (v', w') = (v + v', w + w')$ and $(v, w) \cdot a = (v \cdot a, w \cdot a )$. This is an $A$ module with basis $B \sqcup B'$. 
+Let $V$ and $W$ be $A$-modules with bases $B = (v_{1}, \ldots, v_{n})$ and $B = ( w_{1}, \ldots, w_{n} )$. The (external) direct sum is defined to be $V \oplus W = \left\{ (v, w) : v \in V, w \in W \right\}$. With $(v, w) + (v', w') = (v + v', w + w')$ and $(v, w) \cdot a = (v \cdot a, w \cdot a )$. This is an $A$ module with basis $B \sqcup B'$.
 
 Tensor product: $V \otimes W = \left\{ \sum v \otimes w \right\}$ with $(v \otimes w ) \cdot a = (v a \otimes w a)$ is an $A$-module with basis $B \times B'$.
 
 The (internal) direct sum decomposition: Let $V$ be an $A$-module with submodules $v_{1}, \ldots, v_{n}$, $v_{i} \neq 0$. Then $V = \oplus v_{i} = v_{1} \oplus \ldots \oplus v_{n}$. If every $v \in V$ can be written uniquely in the form $v = v_{1} + \ldots + v_{n}$ with $v_{i} \in V_{i}$.
 
 \begin{example}
-Let $G = 1$, $V$ an $F$-space with basis $B = (v_{1}, \ldots, v_{n})$. Then as $FG$-module $V = F_{v_{1}} \oplus \ldots \oplus F_{v_{n}}$. 
+Let $G = 1$, $V$ an $F$-space with basis $B = (v_{1}, \ldots, v_{n})$. Then as $FG$-module $V = F_{v_{1}} \oplus \ldots \oplus F_{v_{n}}$.
 \end{example}
 An $A$-module $V$ is:
 \begin{itemize}
 \item simple if 0 and $V$ are its only submodules.
-\item reducible otherwise. 
+\item reducible otherwise.
 \item decomposable if $V = U \oplus W$ with $U \neq 0$ and $W \neq 0$.
 \item indecomposable otherwise.
-\end{itemize} 
+\end{itemize}
 Question: Is an $A$-module reducible if and only if it is decomposable?
 
 \begin{definition}
@@ -971,7 +972,7 @@ Same notation for the representation $\delta: A \rightarrow End(V)$. In terms of
 \end{array}
 \right]
 \end{equation*}
-For non-zero representation $\delta_{1}, \delta_{2}$ of $A$, $0 \neq U \subset_{A} V$ take a basis $u_{1}, \ldots, u_{l}$ of $U$. Extend this to a basis $(u_{1}, \ldots, u_{l}, w_{l+1}, \ldots, w_{n})$ of $V$. If $\delta$ is decomposable: 
+For non-zero representation $\delta_{1}, \delta_{2}$ of $A$, $0 \neq U \subset_{A} V$ take a basis $u_{1}, \ldots, u_{l}$ of $U$. Extend this to a basis $(u_{1}, \ldots, u_{l}, w_{l+1}, \ldots, w_{n})$ of $V$. If $\delta$ is decomposable:
  \begin{equation*}
 \mbox{$\delta (a )$} = \left[
 \begin{array}{ccc}
@@ -981,7 +982,7 @@ For non-zero representation $\delta_{1}, \delta_{2}$ of $A$, $0 \neq U \subset_{
 \end{array}
 \right]
 \end{equation*}
-$V = U \oplus W$, where $u_{1}, \ldots, u_{l}$ is a basis for $U$ and $w_{l + 1}, \ldots, w_{n}$ is a basis for $W$ and together they form a basis for $V$. 
+$V = U \oplus W$, where $u_{1}, \ldots, u_{l}$ is a basis for $U$ and $w_{l + 1}, \ldots, w_{n}$ is a basis for $W$ and together they form a basis for $V$.
 
 Question: Is an $A$-module reducible if and only if it is decomposable?
 Answer: It depends: this divides representation theory into ordinary representation theory, to which the answer is yes, and modular representation theory, where the answer is no.
@@ -989,10 +990,10 @@ Answer: It depends: this divides representation theory into ordinary representat
 \begin{center}
 \textbf{Simple Modules}
 \end{center}
-An $F$-algebra $V$ finite dinmensional $A$-module.
+$A$ an $F$-algebra, $V$ finite dimensional $A$-module.
 
 \begin{theorem}
-(Jordon-H\"{o}lder): Any two composition series $0 = v_{0} <_{A} v_{1} <_{A} \ldots <_{A} v_{n}$ such that $v_{k} / v_{k - 1}$ is simple, have the same length $n$ and the same composition factor up to ordering and isomorphism. 
+(Jordon-H\"{o}lder): Any two composition series $0 = v_{0} <_{A} v_{1} <_{A} \ldots <_{A} v_{n}$ such that $v_{k} / v_{k - 1}$ is simple, have the same length $n$ and the same composition factor up to ordering and isomorphism.
 \end{theorem}
 As a consequence we can choose a basis of $V$ so that:
 \begin{equation*}
@@ -1009,6 +1010,7 @@ where the $\delta_{i}$  are representations on simple factors.
 
 If $A$ (as an $A$-module) has a composition series (which it has if $dimA < \infty$) then $A$ (the algebra) has only finitely many simple modules up to isomorphism, as a consequence of the following lemma:
 \begin{lemma}
+\label{simple}
 Let $V$ be an $A$-module then:
 \begin{enumerate}
 \item $V$ simple $\Rightarrow V \cong_{A} A / M$ for some maximal right ideal of $A$ (submodules of the regular $A$-module $A$ are right ideals of the ring $A$).
@@ -1019,7 +1021,7 @@ Let $V$ be an $A$-module then:
 
  \begin{proof}
 (2) Choose $v \in V$ and consider: $$\varphi: A \rightarrow V$$ $$a \mapsto v \cdot a$$
-and consider $\varphi$ as an $A$-module homomorphism. $V$ simple $\Rightarrow v \cdot A = Im \varphi = \begin{cases} 
+and consider $\varphi$ as an $A$-module homomorphism. $V$ simple $\Rightarrow v \cdot A = Im \varphi = \begin{cases}
 0\\
 V
 \end{cases}$
@@ -1028,12 +1030,92 @@ Conversely; Suppose $U \neq 0$ is a submoduleof $V$ pick $0 \neq v \in U$, then 
 
 (1) Homomorphism theorem: $$A / Ker \varphi \cong_{A} Im \varphi.$$
 
-(3) Show: non-zero $A$-module homomorphism $\varphi: V \rightarrow V$ are invertible. $V$ simple $$Ker \varphi = \begin{cases} 
+(3) Show: non-zero $A$-module homomorphism $\varphi: V \rightarrow V$ are invertible. $V$ simple $$Ker \varphi = \begin{cases}
 0 & \varphi \mbox{ is invertible}\\
 V & \mbox{then }\varphi = 0
 \end{cases}$$
-If $F$ is algebraically closed: the characteristic polynomial $\chi_{\varphi}$ has a root $\alpha \in F$. $\varphi-\alpha id_{V}$ is not invertible hence 0; $\varphi = \alpha id_{V}. End_{A} (V) \cong F$.
 \end{proof}
+
+If $F$ is algebraically closed: the characteristic polynomial $\chi_{\varphi}$ has a root $\alpha \in F$. $\varphi-\alpha id_{V}$ is not invertible hence 0; $\varphi = \alpha id_{V}. End_{A} (V) \cong F$.
+
+\begin{center}
+\textbf{Spinning Algorithm}
+\end{center}
+
+Let $A$ be an $F$-algebra and $V$ be an $A$-module.  We consider Lemma \ref{simple}(2) which says that $V$ is simple if and only if $v.A=V$ for all $0\neq v\in V$. We want to use an algorithm to find $v.A$.  Assume $A$ is generated by elements $M:=\{a_1,\ldots,a_m\}$ as an $F$-algebra.  The input of this algorithm is $0\neq v\in V$.  The output is an $F$-basis of $v.A$.  The algorithm is as follows:
+\begin{enumerate}
+\item $B\leftarrow (v)$
+\item for $b\in B$:
+\item \ \ for $m\in M$:
+\item \ \ \ \ $w\leftarrow b.m$
+\item \ \ \ \ if $w\not\in\langle B\rangle_F$: append $w$ to the list $B$.
+\item return $B$
+\end{enumerate}
+
+To see that this is what we need, note that
+\begin{itemize}
+\item The algorithm terminates because $V$ is finite dimensional.
+\item $B$ is linearly independent by construction.
+\item $B$ spans $v.A$ since $v\in B\subseteq v.A\subseteq\langle B\rangle_F .A\subseteq\langle B\rangle_F\subseteq v.A$ so $\langle B\rangle_F=v.A$
+\end{itemize}
+
+To test simplicity, we could compute $v.A$ for all $0\neq v\in V$, but but there could be too many $0\neq v\in V$.  We only need to test one $v$ from each 1-dimensional subspace, however this could still be too many.
+
+\begin{center}
+\textbf{Duality}
+\end{center}
+
+$V^*=Hom(V,F)=\{\lambda:V\rightarrow F$ linear$\}$.  For $a\in A$ the rule $a\lambda:v\mapsto\lambda(v.a)$ turns $V^*$ into a \textbf{left} $A$-module.\\
+
+We could try to define a \textbf{right} $A$-module by $\lambda.a(v)=\lambda(v.a)$.  However,
+$$(\lambda.a).a'(v)=(\lambda.a)(v.a')=\lambda((v.a').a)=\lambda(v.(a'a))$$
+and
+$$\lambda.(aa')(v)=\lambda(v.(aa')).$$
+These are not equal so we do not have a right module.\\
+
+If $A=FG$ then it has a basis of invertible elements $g\in G$.  We can define $\lambda.g:v\mapsto\lambda(v.g^{-1})$ and extend this linearly to all of $A$.  This turns $V^*$ into a \textbf{right} $A$-module called the \emph{contragredient module} of $V$.
+
+\begin{theorem}[Duality Theorem]
+The map $W\mapsto W^0:=\{\lambda\in V^*:\lambda(w)=0$ for all $w\in W\}=\{\lambda\in V^*:W\leq ker\lambda\}$ is an inclusion reversing anti-isomorphism of the poset of $A$ submodules of $V$ onto that of $V^*$.
+\end{theorem}
+
+For example
+$$\xymatrix{V \ar@{-}[d] & V^*=(0)^0 \ar@{-}[d] \\
+W \ar@{-}[d] & U^0 \ar@{-}[d] \\
+U \ar@{-}[d] & W^0 \ar@{-}[d] \\
+0 & 0=(V^*)^0}$$
+For $U\leq_A W\leq_A V$ we have $(W/U)^*\cong_A U^0/W^0$.  In particular, $V$ is simple $\Leftrightarrow V^*$ is simple.
+
+\begin{theorem}[Norton's Irreducibility Criterion]
+Let $F$ be a field, $A$ an $F$-algebra, and $V$ an $A$-module.  For $a\in A$, let $ker_V(a)=\{v\in V:v.a=0\}$.  Suppose $ker_V(a)\neq 0$ for some $0\neq a\in A$. Then $V$ is simple if and only if the following conditions hold:
+\begin{enumerate}[a)]
+\item $v.A=V$ for all $v\in ker_V(a)\backslash\{0\}$;
+\item $A.\lambda=V^*$ for some $\lambda\in ker_{V^*}(a)$.
+\end{enumerate}
+\end{theorem}
+
+Our hope is that $dim_F ker_V(a)=1$.  Then we will only need to test one $v$ and one $\lambda$ to see if $V$ is simple.
+
+\begin{example}
+Let $G=\Sym_3=\langle a, b\rangle$ where $a=(1,2)$ and $b=(2,3)$.  Then
+$$\delta(a)=\left(\begin{array}{cc}
+-1  & 0 \\
+1 & 1 \\
+\end{array}\right)
+\textrm{ and }
+\delta(b)=\left(\begin{array}{cc}
+1  & 1 \\
+0 & -1 \\
+\end{array}\right).$$
+We have $V=F^{1\times 2}$ and $V^*=F^{2\times 1}$.  Consider
+$$\delta(1+a)=\left(\begin{array}{cc}
+0  & 0 \\
+1 & 2 \\
+\end{array}\right).$$
+We want to use Norton's irreducibility criterion.  We have $ker_V(1+a)=\langle(1,0)\rangle_F$ and $(1,0).A=V$ so $a)$ is satisfied.  Also,
+$$ker_{V^*}(1+a)=\langle\left(\begin{array}{c} -2 \\ 1 \\ \end{array}\right)\rangle_F\textrm{ and }A.\left(\begin{array}{c} -2 \\ 1 \\ \end{array}\right)=\langle\left(\begin{array}{c} -2 \\ 1 \\ \end{array}\right), \left(\begin{array}{c} 1 \\ 1 \\ \end{array}\right)\rangle_F=V^*$$
+if $-2\neq 1$. Hence $b)$ is satisfied if $-2\neq 1$.  Therefore $V$ is simple unless $char\ F=3$.
+\end{example}
 
 \nocite{*}
 
