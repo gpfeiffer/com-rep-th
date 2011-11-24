@@ -1264,7 +1264,7 @@ Let G be a finite group. $A = FG$. Then $A$ is semisimple if and only if $\left|
 
 \begin{proof}
 Assume the characteristis of $F$ does not divide the order of $G$. Let $U \leq_{A} A$. Show that $U$ has a complement. $W \leq_{A} A$. $U \oplus U'$ as $F$-space (not unique) (extend a basis of $U$ to all of $A$) $B = \left(b_{1}, \ldots, b_{s} \right)$ and $B' = \left( b_{s}, \ldots, b_{\left| G \right|} \right)$. $\pi \in End_{F} A$: projection of $A$ into $U$ with kernel $U'$.
-$\pi \left( b_{i} \right) = 
+$\pi \left( b_{i} \right) =
 \begin{cases}
 b_{i} & \mbox{if } i \leq S\\
 0 & \mbox{if } i > S
@@ -1272,7 +1272,7 @@ b_{i} & \mbox{if } i \leq S\\
 Define $\widetilde{\pi} \in End_{F} A$ by $\widetilde{\pi}_{a \in A} (a) = \frac{1}{\left| G \right|} \sum_{g \in G} \pi^{g}$. Where $\pi^{g}$ is defined by $\pi^{g} = \pi \left( a \cdot g^{-1} \right)g$. We want to show:
 \begin{itemize}
 \item $\widetilde{\pi}^{2} = \widetilde{\pi}$
-\item $Im(\widetilde{\pi}) = Im( \pi)$ 
+\item $Im(\widetilde{\pi}) = Im( \pi)$
 \item $\widetilde{\pi} \in End_{A} A$
 \end{itemize}
 $\pi^{g}$ defines an action of $G$ on $End_{F} A$. Check:
@@ -1284,7 +1284,7 @@ Now suppose $\pi^{2} = \pi$ with $Im \pi = U$ then:
 \begin{itemize}
 \item $\left( \pi^{g} \right)^{2} = \pi^{g}$
 \item  $Im( \pi^{g} ) = Im (\pi)$
-\end{itemize} 
+\end{itemize}
 The first item is clear from the fact that $\pi$ and $\pi^{g}$ are both projection mappings.
 The second item follows from $ \left( \pi^{'} \right)^{2} = \pi^{'}$ with $Im \pi^{'} = Im \pi$
 $\pi \circ \pi^{'} = \pi^{'}$, $\pi^{'} \circ \pi = \pi$.
@@ -1298,6 +1298,55 @@ $Inv_{G} (A) = \left\langle \sum_{g \in G} g \right\rangle_{F} = \sum_{g \in G} 
 
 If the characteristic of $F = p$ and divides the order of $G$ then this is modular representation theory. However if the characteristic of $F = 0$ then this is ordinary representation theory.
 \end{proof}
+
+\begin{theorem}[Wedderburn]
+Let $A$ be a finite dimensional $F$-algebra.  If $A$ is semisimple ($A=\bigoplus_j S_j$ where the $S_j$ are simple) then $A$ is isomorphic to a direct sum of full matrix rings over division rings.
+\end{theorem}
+
+More precisely, if $\{L_1,\ldots,L_r\}$ are representatives of the isomorphism types of $A$-modules, set $D_i=\End_A(L_i)^{op}$.  Then $A_i=\bigoplus_{S_j\cong L_i} S_j\cong L_i^{n_i}$ (the direct sum of $n_i$ copies of $L_i$) is a two-sided ideal in $A=\bigoplus_{i=1}^r A_i$ where the $A_i$ are homogeneous components, and $A_i\cong D_i^{n_i\times n_i}$.  We have $dim_F L_i=n_i dim_F D_i$.
+
+\begin{example}
+Let $G=\Sym_3=\langle a, b\rangle$ where $a=(1,2)$ and $b=(2,3)$.  Then $|G|=6$ so for $A=FG$ we have $dim_F A=6$.  Hence multiplication in $A$ is multiplication of $6\times 6$ matrices.  We consider the $A$-modules.  We have $Inv_G(A)=\langle\sum_{\pi\in G}\pi\rangle_F$ with $a, b\mapsto [1]$.  We also have $\langle\sum_{\pi\in G} sgn(\pi)\pi\rangle$ with $a, b\mapsto [-1]$.  Also, if $V$ is a permutation module with basis $B=(b_1, b_2, b_3)$ then $Inv_G(V)=\langle b_2-b_1, b_3-b_2\rangle$.  Note that $b_3=b_1=(b_2-b_1)+(b_3-b_2)$.  Then we have
+$$a\mapsto\left(\begin{array}{cc} -1 & 0 \\ 1 & 1 \\\end{array}\right)\textrm{ and }b\mapsto\left(\begin{array}{cc} 1 & 1 \\ 0 & -1 \\\end{array}\right).$$
+Putting these together we get the $4\times 4$ matrices:
+$$a\mapsto\left(\begin{array}{c|cc|c}
+1 &  &  &  \\ \hline
+ & -1 & 0 &  \\
+ & 1 & 1 &  \\ \hline
+ &  &  & -1 \\
+\end{array}\right)$$
+and
+$$b\mapsto\left(\begin{array}{c|cc|c}
+1 &  &  &  \\ \hline
+ & 1 & 1 &  \\
+ & 0 & -1 &  \\ \hline
+ &  &  & -1 \\
+\end{array}\right).$$
+By Wedderburn's Theorem, we have
+$$\mathbb{C}G\cong F^{1\times 1}\oplus F^{2\times 2}\oplus F^{1\times 1}.$$
+i.e., we have $D_i=F$ for $1\leq i\leq 3$, $n_1=n_3=1$, and $n_2=2$.  Hence $A=L_1\oplus L_2\oplus L_2\oplus L_3$ since $dim L_2=2$.
+\end{example}
+
+If $\varphi:FG\rightarrow\bigoplus F^{n_i\times n_i}$ and its inverse $\varphi^{-1}:\bigoplus F^{n_i\times n_i}\rightarrow FG$ are known, we can multiply $a, b\in FG$ as $\varphi^{-1}(\varphi(a)\varphi(b))$.  This can make things easier as, in the above example, $a$ and $b$ are $6\times 6$ matrices, whereas $\varphi(a)$ and $\varphi(b)$ are $4\times 4$ matrices.\\
+
+If $C_n=\langle a\rangle$ is the cyclic group of order $n$, where $a^n=1$, we have
+$$\mathbb{C}C_n\cong\underbrace{\mathbb{C}^{1\times 1}\oplus\ldots\oplus\mathbb{C}^{1\times 1}}_{n\textrm{ times}}=\mathbb{C}^n.$$
+For $n=5$ we would have
+$$a\mapsto\left( \begin{array}{ccccc} 1 & & & & \\ & \omega & & & \\ & & \omega^2 & & \\ & & & \omega^3 & \\ & & & & \omega^4 \\\end{array}\right)$$
+where $\omega=\sqrt[5]{1}$.  We could also write $\mathbb{C}C_n\cong\mathbb{C}[X]/(X^n-1)=\mathbb{C}^n$ as we have the bijection $a=\sum a_iX_i\leftrightarrow (a_0,\ldots,a_{n-1})$.\\
+We define the Discrete Fourier Transform as $DF_{\omega}:\mathbb{C}^n\rightarrow\mathbb{C}^n$ given by $a\mapsto (a(\omega^0),\ldots,a(\omega^{n-1})$.  Then $\varphi:\mathbb{C}C_n\rightarrow\mathbb{C}^n$, $a=\sum a_iX_i\mapsto DF_{\omega}(a)$ is an algebra isomorphism with inverse $\varphi:\mathbb{C}^n\rightarrow\mathbb{C}C_n$, $a\mapsto\frac{1}{n}DF_{\omega^{-1}}(a).$\\
+To see this, let $a=(a_0,\ldots,a_{n-1})$.  Then $DF_{\omega^{-1}}(DF_{\omega}(a))=(b_0,\ldots,b_{n-1})$ where
+\begin{equation*}
+\begin{split}
+b_j &= \sum_{i=0}^{n-1}(\sum_{k=0}^{n-1}a_k\omega^{ik})\omega^{-ik}\\
+&= \sum_{k=0}^{n-1}a_k(\sum_{i=0}^{n-1}\omega^{i(k-j)})\\
+&= \sum_{k=0}^{n-1}n[j=k]a_k\\
+&= na_j
+\end{split}
+\end{equation*}
+using $\sum_{j=0}^{n-1}\omega^{ij}=n[j=0]$.\\
+This leads to the Fast Fourier Transform which allows fast multiplication of polynomials.  This can be applied to many things, including medical image processing.
+
 \nocite{*}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
