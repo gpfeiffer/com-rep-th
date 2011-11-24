@@ -1229,6 +1229,75 @@ Hence the permutation module has only 3 composition factors up to isomorphism, w
 A module $V$ is called \emph{semisimple} if it is a sum $V=\sum_i S_i$ of simple modules $S_i$.
 \end{definition}
 
+Let $U$, $W$ be in $F$-space: $U + W = \left\{ u + w: u \in U, w \in W \right\}$. $V = U \oplus W = \left\{ (u,w) : u \in U, w \in W \right\}$. If each $v = u + w$ in a unique way $V= U + W$ for some $u \in U$, $w \in W$. $U + W = U \oplus W \Leftrightarrow U \cap W = \left\{ 0 \right\}$.
+
+\begin{lemma}
+The following are equivalent:
+\begin{enumerate}
+\item $V$ is semisimple.
+\item $V$ is a direct sum of simple modules.
+\item Every submodule $W$ of $V$ has a complement $W' \leq_{A} V$: $V = W \oplus W'$ (every submodule is a direct summand).
+\end{enumerate}
+\end{lemma}
+
+\begin{definition}
+The algebra $A$ is called \emph{semisimple} if it semisimple as an $A$-module (under right multiplication).
+\end{definition}
+
+\begin{corollary}
+\begin{itemize}
+\item Sums submodules and factor modules of semisimple modules.
+\item $A$ semisimple $\Leftrightarrow$ every $A$-module is semisimple.
+\end{itemize}
+\end{corollary}
+
+$V$ is a finite dimensional $A$-module, then $V$ is a quotient of $A \oplus \ldots \oplus A$.
+$$V = \left\langle v_{1}, \ldots, v_{l} \right\rangle$$
+$$v = \sum_{i= 1}^{l} {a_{i}}{v_{i}} \; , a_{i} \in A$$
+$$A \oplus \ldots \oplus A \rightarrow V \text{ surjective}$$
+$$\left( a_{1}, \ldots, a_{l} \right) \mapsto \sum{a_{i}}{v_{i}}$$
+What about group algebras?
+
+\begin{theorem}[Maschke's Theorem]
+Let G be a finite group. $A = FG$. Then $A$ is semisimple if and only if $\left| G\right|$ is not zero in $F$, i.e. the characteristic of $F$ does not divide the order of $G$.
+\end{theorem}
+
+\begin{proof}
+Assume the characteristis of $F$ does not divide the order of $G$. Let $U \leq_{A} A$. Show that $U$ has a complement. $W \leq_{A} A$. $U \oplus U'$ as $F$-space (not unique) (extend a basis of $U$ to all of $A$) $B = \left(b_{1}, \ldots, b_{s} \right)$ and $B' = \left( b_{s}, \ldots, b_{\left| G \right|} \right)$. $\pi \in End_{F} A$: projection of $A$ into $U$ with kernel $U'$.
+$\pi \left( b_{i} \right) = 
+\begin{cases}
+b_{i} & \mbox{if } i \leq S\\
+0 & \mbox{if } i > S
+\end{cases}$.
+Define $\widetilde{\pi} \in End_{F} A$ by $\widetilde{\pi}_{a \in A} (a) = \frac{1}{\left| G \right|} \sum_{g \in G} \pi^{g}$. Where $\pi^{g}$ is defined by $\pi^{g} = \pi \left( a \cdot g^{-1} \right)g$. We want to show:
+\begin{itemize}
+\item $\widetilde{\pi}^{2} = \widetilde{\pi}$
+\item $Im(\widetilde{\pi}) = Im( \pi)$ 
+\item $\widetilde{\pi} \in End_{A} A$
+\end{itemize}
+$\pi^{g}$ defines an action of $G$ on $End_{F} A$. Check:
+$$\pi^{gh} (a) = \pi \left( a \left( gh \right)^{-1} \right) gh$$
+$$\left( \pi^{g} \right)^{h} (a) = \pi^{g} \left(a \cdot h^{-1} \right) h$$
+$$ = \left( \pi \left( a \cdot h^{-1} \right) g^{-1} \right) gh$$
+$$ \pi^{gh} (a)$$
+Now suppose $\pi^{2} = \pi$ with $Im \pi = U$ then:
+\begin{itemize}
+\item $\left( \pi^{g} \right)^{2} = \pi^{g}$
+\item  $Im( \pi^{g} ) = Im (\pi)$
+\end{itemize} 
+The first item is clear from the fact that $\pi$ and $\pi^{g}$ are both projection mappings.
+The second item follows from $ \left( \pi^{'} \right)^{2} = \pi^{'}$ with $Im \pi^{'} = Im \pi$
+$\pi \circ \pi^{'} = \pi^{'}$, $\pi^{'} \circ \pi = \pi$.
+$$(\pi + \pi^{'} )^{2} = (\pi + \pi^{'} ) (\pi^{'} + \pi)$$
+$$ = 2 \pi + 2 \pi^{'}$$
+$$\Rightarrow \left( \frac{1}{2} \left( \pi + \pi^{'} \right) \right)^{2}$$
+$$ = \frac{1}{2} \left( \pi + \pi^{'} \right)$$
+
+Conversely assume the characteristic of $F$ divides the order of $G$ then:
+$Inv_{G} (A) = \left\langle \sum_{g \in G} g \right\rangle_{F} = \sum_{g \in G} 1 = \left| G \right| = 0$. This lies in $Inv^{G} (A) = \left\{ \sum_{g \in G} a_{g} g : \sum_{g \in G} a_{g} = 0 \right\}$. $G$ acts trivially on $A/ Inv^{G} (A)$. $Inv_{G} (A)$ is the largest submodule on which $G$ acts trivially. This implies $Inv^{G}_{v} (A)$ cannot have a complement.
+
+If the characteristic of $F = p$ and divides the order of $G$ then this is modular representation theory. However if the characteristic of $F = 0$ then this is ordinary representation theory.
+\end{proof}
 \nocite{*}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
