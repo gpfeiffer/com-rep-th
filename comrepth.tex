@@ -1,3 +1,4 @@
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%
 %%  comrepth.tex
@@ -29,6 +30,7 @@
 \DeclareMathOperator{\End}{\mathsf{End}}
 \DeclareMathOperator{\Sym}{\mathsf{Sym}}
 \DeclareMathOperator{\GL}{\mathsf{GL}}
+\DeclareMathOperator{\Inv}{\mathsf{Inv}}
 
 \newcommand{\Size}[1]{\left| #1 \right|}
 
@@ -630,11 +632,11 @@ Let $X$ and $Y$ be $G$-sets, then $X \sqcup Y$ and $X \times Y$ are $G$-sets. De
 
 \section{Matrix Representations}
 
-Representing groups as automorphisms of vector spaces. $\alpha \in Aut(X)$, $\alpha: X \rightarrow X$ specify all $\alpha (x)$ if $X$ is a set. $X = V$ sufficient to specify $\alpha (v)$ for $v$ in a basis of $V$. Now we must distinguish between $F$-representations and matrix representations over $F$, where $F$ is a field.
+Representing groups as automorphisms of vector spaces. $\alpha \in \Aut(X)$, $\alpha: X \rightarrow X$ specify all $\alpha (x)$ if $X$ is a set. $X = V$ sufficient to specify $\alpha (v)$ for $v$ in a basis of $V$. Now we must distinguish between $F$-representations and matrix representations over $F$, where $F$ is a field.
 
 Let $G$ be a group, $F$ a field and $V$ an $F$- vector space of dimension $dim(V) = n$.
 
-$GL(V) := Aut_{F} (V) = End_{F}^{\ast} (V)$, where $End_{F} (V) = Hom_{F} (V, V)$. Write $\varphi \in Aut_{F} (V)$ on the right: $v \cdot \varphi = v^{\varphi}$ (rather than $\varphi (v)$). Choose a basis $B = \left( v_{1}, \ldots, v_{n} \right)$ of $V$. $\varphi \in End_{F} (V)$ the matrix $[ \varphi ]_{B} = [ a_{i j} ] \in F^{n \times n}$ defined by $v_{i}^{\varphi}  = \sum_{j = 1}^{n} {a_{ij}}{v_{j}}$, where $i = 1, \ldots, n$ is the matrix of $\varphi$ relative to $B$. Then $[ \  ]_{B} : GL(V) \rightarrow GL_{n} (F) = \left( F^{n \times n} \right)^{\ast}$ defined by $\varphi \mapsto [ \varphi ]_{B}$ is an isomorphism of groups: $[ \varphi \cdot \psi ]_{B} = [ \varphi ]_{B} [ \psi ]_{B}$. $v \in V: [ v ]_{B} = \underbrace{\left( a_{1}, \ldots, a_{n} \right)}_{\text{row vectors}}$ if $v = \sum{a_{i}}{v_{i}}$. $\left[ v^{\varphi} \right]_{B} = [v]_{B} [ \varphi ]_{B}$ is the row convention.
+$GL(V) := \Aut_{F} (V) = \End_{F}^{\ast} (V)$, where $\End_{F} (V) = Hom_{F} (V, V)$. Write $\varphi \in\Aut_{F} (V)$ on the right: $v \cdot \varphi = v^{\varphi}$ (rather than $\varphi (v)$). Choose a basis $B = \left( v_{1}, \ldots, v_{n} \right)$ of $V$. $\varphi \in \End_{F} (V)$ the matrix $[ \varphi ]_{B} = [ a_{i j} ] \in F^{n \times n}$ defined by $v_{i}^{\varphi}  = \sum_{j = 1}^{n} {a_{ij}}{v_{j}}$, where $i = 1, \ldots, n$ is the matrix of $\varphi$ relative to $B$. Then $[ \  ]_{B} : GL(V) \rightarrow GL_{n} (F) = \left( F^{n \times n} \right)^{\ast}$ defined by $\varphi \mapsto [ \varphi ]_{B}$ is an isomorphism of groups: $[ \varphi \cdot \psi ]_{B} = [ \varphi ]_{B} [ \psi ]_{B}$. $v \in V: [ v ]_{B} = \underbrace{\left( a_{1}, \ldots, a_{n} \right)}_{\text{row vectors}}$ if $v = \sum{a_{i}}{v_{i}}$. $\left[ v^{\varphi} \right]_{B} = [v]_{B} [ \varphi ]_{B}$ is the row convention.
 
 \begin{definition}
 An $F$-representation of $G$ is a homomorphism $G \rightarrow GL(V)$. A matrix representation of $G$ over a field $F$ is a homomorphism where $dim(V) = n$ is the degree of the representation.
@@ -962,7 +964,7 @@ Question: Is an $A$-module reducible if and only if it is decomposable?
 An $A$-module $V$ is simple if $0, V \leq_{A} V$ are the only submodules of $V$ (reducible otherwise).
 Decomposable if $V = U \oplus W$ for submodules $0 \neq U, W \leq_{A} V$ (and indecomposable otherwise).
 \end{definition}
-Same notation for the representation $\delta: A \rightarrow End(V)$. In terms of matrices $\delta$ reducible means:
+Same notation for the representation $\delta: A \rightarrow \End(V)$. In terms of matrices $\delta$ reducible means:
  \begin{equation*}
 \mbox{$\delta (a )$} = \left[
 \begin{array}{ccc}
@@ -1015,7 +1017,7 @@ Let $V$ be an $A$-module then:
 \begin{enumerate}
 \item $V$ simple $\Rightarrow V \cong_{A} A / M$ for some maximal right ideal of $A$ (submodules of the regular $A$-module $A$ are right ideals of the ring $A$).
 \item $V$ simple $\Leftrightarrow v \cdot A = V$ for all $0 \neq v \in V$
-\item $V$ simple $\Rightarrow End_{A} (V)$ is a division ring (Schur's lemma).
+\item $V$ simple $\Rightarrow \End_{A} (V)$ is a division ring (Schur's lemma).
 \end{enumerate}
 \end{lemma}
 
@@ -1120,7 +1122,7 @@ if $-2\neq 1$. Hence $b)$ is satisfied if $-2\neq 1$.  Therefore $V$ is simple u
 Norton's irreducibility criterion relies on the following lemma:
 
 \begin{lemma} \label{pre}
-Let $V$ be a finite dimensional vector space $\left( dim_{F} V < \infty \right)$ and let $\varphi \in End_{F} (V)$. If $W \leq V$ is $\varphi$ invarient ($\varphi (w) \in W$ for all $w \in W$), then: $W \cap ker \varphi = 0 \Rightarrow ker \varphi^{T} \leq W^{0}$. Where $W^{0} = \left\{ x \in V^{\ast} : x|_{W} = 0 \right\} $ .
+Let $V$ be a finite dimensional vector space $\left( dim_{F} V < \infty \right)$ and let $\varphi \in \End_{F} (V)$. If $W \leq V$ is $\varphi$ invarient ($\varphi (w) \in W$ for all $w \in W$), then: $W \cap ker \varphi = 0 \Rightarrow ker \varphi^{T} \leq W^{0}$. Where $W^{0} = \left\{ x \in V^{\ast} : x|_{W} = 0 \right\} $ .
 \end{lemma}
 
 \begin{proof}
@@ -1263,19 +1265,19 @@ Let G be a finite group. $A = FG$. Then $A$ is semisimple if and only if $\left|
 \end{theorem}
 
 \begin{proof}
-Assume the characteristis of $F$ does not divide the order of $G$. Let $U \leq_{A} A$. Show that $U$ has a complement. $W \leq_{A} A$. $U \oplus U'$ as $F$-space (not unique) (extend a basis of $U$ to all of $A$) $B = \left(b_{1}, \ldots, b_{s} \right)$ and $B' = \left( b_{s}, \ldots, b_{\left| G \right|} \right)$. $\pi \in End_{F} A$: projection of $A$ into $U$ with kernel $U'$.
+Assume the characteristis of $F$ does not divide the order of $G$. Let $U \leq_{A} A$. Show that $U$ has a complement. $W \leq_{A} A$. $U \oplus U'$ as $F$-space (not unique) (extend a basis of $U$ to all of $A$) $B = \left(b_{1}, \ldots, b_{s} \right)$ and $B' = \left( b_{s}, \ldots, b_{\left| G \right|} \right)$. $\pi \in \End_{F} A$: projection of $A$ into $U$ with kernel $U'$.
 $\pi \left( b_{i} \right) =
 \begin{cases}
 b_{i} & \mbox{if } i \leq S\\
 0 & \mbox{if } i > S
 \end{cases}$.
-Define $\widetilde{\pi} \in End_{F} A$ by $\widetilde{\pi}_{a \in A} (a) = \frac{1}{\left| G \right|} \sum_{g \in G} \pi^{g}$. Where $\pi^{g}$ is defined by $\pi^{g} = \pi \left( a \cdot g^{-1} \right)g$. We want to show:
+Define $\widetilde{\pi} \in \End_{F} A$ by $\widetilde{\pi}_{a \in A} (a) = \frac{1}{\left| G \right|} \sum_{g \in G} \pi^{g}$. Where $\pi^{g}$ is defined by $\pi^{g} = \pi \left( a \cdot g^{-1} \right)g$. We want to show:
 \begin{itemize}
 \item $\widetilde{\pi}^{2} = \widetilde{\pi}$
 \item $Im(\widetilde{\pi}) = Im( \pi)$
-\item $\widetilde{\pi} \in End_{A} A$
+\item $\widetilde{\pi} \in \End_{A} A$
 \end{itemize}
-$\pi^{g}$ defines an action of $G$ on $End_{F} A$. Check:
+$\pi^{g}$ defines an action of $G$ on $\End_{F} A$. Check:
 $$\pi^{gh} (a) = \pi \left( a \left( gh \right)^{-1} \right) gh$$
 $$\left( \pi^{g} \right)^{h} (a) = \pi^{g} \left(a \cdot h^{-1} \right) h$$
 $$ = \left( \pi \left( a \cdot h^{-1} \right) g^{-1} \right) gh$$
@@ -1306,7 +1308,7 @@ Let $A$ be a finite dimensional $F$-algebra.  If $A$ is semisimple ($A=\bigoplus
 More precisely, if $\{L_1,\ldots,L_r\}$ are representatives of the isomorphism types of $A$-modules, set $D_i=\End_A(L_i)^{op}$.  Then $A_i=\bigoplus_{S_j\cong L_i} S_j\cong L_i^{n_i}$ (the direct sum of $n_i$ copies of $L_i$) is a two-sided ideal in $A=\bigoplus_{i=1}^r A_i$ where the $A_i$ are homogeneous components, and $A_i\cong D_i^{n_i\times n_i}$.  We have $dim_F L_i=n_i dim_F D_i$.
 
 \begin{example}
-Let $G=\Sym_3=\langle a, b\rangle$ where $a=(1,2)$ and $b=(2,3)$.  Then $|G|=6$ so for $A=FG$ we have $dim_F A=6$.  Hence multiplication in $A$ is multiplication of $6\times 6$ matrices.  We consider the $A$-modules.  We have $Inv_G(A)=\langle\sum_{\pi\in G}\pi\rangle_F$ with $a, b\mapsto [1]$.  We also have $\langle\sum_{\pi\in G} sgn(\pi)\pi\rangle$ with $a, b\mapsto [-1]$.  Also, if $V$ is a permutation module with basis $B=(b_1, b_2, b_3)$ then $Inv_G(V)=\langle b_2-b_1, b_3-b_2\rangle$.  Note that $b_3=b_1=(b_2-b_1)+(b_3-b_2)$.  Then we have
+Let $G=\Sym_3=\langle a, b\rangle$ where $a=(1,2)$ and $b=(2,3)$.  Then $|G|=6$ so for $A=FG$ we have $dim_F A=6$.  Hence multiplication in $A$ is multiplication of $6\times 6$ matrices.  We consider the $A$-modules.  We have $\Inv_G(A)=\langle\sum_{\pi\in G}\pi\rangle_F$ with $a, b\mapsto [1]$.  We also have $\langle\sum_{\pi\in G} sgn(\pi)\pi\rangle$ with $a, b\mapsto [-1]$.  Also, if $V$ is a permutation module with basis $B=(b_1, b_2, b_3)$ then $\Inv_G(V)=\langle b_2-b_1, b_3-b_2\rangle$.  Note that $b_3=b_1=(b_2-b_1)+(b_3-b_2)$.  Then we have
 $$a\mapsto\left(\begin{array}{cc} -1 & 0 \\ 1 & 1 \\\end{array}\right)\textrm{ and }b\mapsto\left(\begin{array}{cc} 1 & 1 \\ 0 & -1 \\\end{array}\right).$$
 Putting these together we get the $4\times 4$ matrices:
 $$a\mapsto\left(\begin{array}{c|cc|c}
@@ -1334,7 +1336,9 @@ $$\mathbb{C}C_n\cong\underbrace{\mathbb{C}^{1\times 1}\oplus\ldots\oplus\mathbb{
 For $n=5$ we would have
 $$a\mapsto\left( \begin{array}{ccccc} 1 & & & & \\ & \omega & & & \\ & & \omega^2 & & \\ & & & \omega^3 & \\ & & & & \omega^4 \\\end{array}\right)$$
 where $\omega=\sqrt[5]{1}$.  We could also write $\mathbb{C}C_n\cong\mathbb{C}[X]/(X^n-1)=\mathbb{C}^n$ as we have the bijection $a=\sum a_iX_i\leftrightarrow (a_0,\ldots,a_{n-1})$.\\
-We define the Discrete Fourier Transform as $DF_{\omega}:\mathbb{C}^n\rightarrow\mathbb{C}^n$ given by $a\mapsto (a(\omega^0),\ldots,a(\omega^{n-1})$.  Then $\varphi:\mathbb{C}C_n\rightarrow\mathbb{C}^n$, $a=\sum a_iX_i\mapsto DF_{\omega}(a)$ is an algebra isomorphism with inverse $\varphi:\mathbb{C}^n\rightarrow\mathbb{C}C_n$, $a\mapsto\frac{1}{n}DF_{\omega^{-1}}(a).$\\
+We define the Discrete Fourier Transform as $DF_{\omega}:\mathbb{C}^n\rightarrow\mathbb{C}^n$ given by
+\noindent
+ $a\mapsto (a(\omega^0),\ldots,a(\omega^{n-1})$.  Then $\varphi:\mathbb{C}C_n\rightarrow\mathbb{C}^n$, $a=\sum a_iX_i\mapsto DF_{\omega}(a)$ is an algebra isomorphism with inverse $\varphi:\mathbb{C}^n\rightarrow\mathbb{C}C_n$, $a\mapsto\frac{1}{n}DF_{\omega^{-1}}(a).$\\
 To see this, let $a=(a_0,\ldots,a_{n-1})$.  Then $DF_{\omega^{-1}}(DF_{\omega}(a))=(b_0,\ldots,b_{n-1})$ where
 \begin{equation*}
 \begin{split}
