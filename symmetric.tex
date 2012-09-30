@@ -14,6 +14,7 @@
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\R}{\mathbb{R}}
 \renewcommand{\AA}{\mathcal{A}}
+\newcommand{\CC}{\mathcal{C}}
 \newcommand{\FF}{\mathcal{F}}
 \newcommand{\GG}{\mathcal{G}}
 \newcommand{\HH}{\mathcal{H}}
@@ -24,10 +25,13 @@
 \newcommand{\GL}{\mathsf{GL}}
 \newcommand{\Hom}{\mathsf{Hom}}
 \newcommand{\End}{\mathsf{End}}
-\newcommand{\Id}{\mathsf{Id}}
+\newcommand{\Res}{\mathsf{Res}}
+\newcommand{\Ind}{\mathsf{Ind}}
+\newcommand{\id}{\mathsf{id}}
 \newcommand{\rad}{\mathsf{rad}}
 \newcommand{\supp}{\mathsf{supp}}
 
+\newcommand{\Size}[1]{\left|#1\right|}
 \newcommand{\Span}[1]{\langle#1\rangle}
 
 \newcommand{\prefix}{\preceq_{\pi}}
@@ -40,56 +44,163 @@
   \textbf{\uppercase{
 Gelfand-Tsetlin Algebra.
 }}\\
-G\"otz Pfeiffer \\
-(\texttt{goetz.pfeiffer@nuigalway.ie})
+after: Ceccherini-Silberstein - Representation Theory of the Symmetric Groups.
 \end{center}
 
 \subsection{Problem}
 Classify the (irreducible) matrix representations (over $\C$) of the symmetric group $\Sym_n$.
 
 \subsection{}
-Let $G$ be a finite group with simple modules $\{W^{\rho}: \rho \in J\}$.
+Let $G$ be a finite group with group algebra $\C G = \{ \sum_{g \in G}
+\alpha_g g : \alpha_g \in \C \}$.  A representation of $G$ is a
+homomorphism $G \to \GL(V)$ for some (finite-dimensional) $\C$-space
+$V$.  This extends to a unique homomorphism $\C G \to \End(V)$. Then
+$V$ is a $\C G$-module with linear action $(v, a) \mapsto v.a$, $v \in
+V$, $a \in \C G$.  
 
 \subsection{Schur's Lemma 1.2.1}
-Let  $\rho, \sigma \in J$ with $\rho \neq \sigma$.
-Then
-$\Hom_G(W^{\rho}, W^{\sigma}) = 0$ 
-and $\End_G(W^{\rho}) = \Hom_G(W^{\rho}, W^{\rho}) = \C \Id_{W^{\rho}}$.
+Let $\hat{G}$ be such that $\{W^{\rho}: \rho \in \hat{G}\}$ are the simple
+$G$-modules.  Let $\rho, \sigma \in \hat{G}$.  Then $\Hom_G(W^{\rho},
+W^{\sigma}) = \{0\}$ unless $\rho = \sigma$, and $\End_G(W^{\rho}) =
+\Hom_G(W^{\rho}, W^{\rho}) = \Span{\id_{W^{\rho}}}$.
 
 
 \subsection{}
-Recall that any (finite-dimensional) $G$-module $V = \C^n$ (i.e., any representation
-$\sigma \colon G \to \GL(V)$) can be decomposed as a direct
-sum of simple $G$-modules.  Thus, up to isomorphism
-$V = \bigoplus_{\rho \in J} m_{\rho} W^{\rho}$, for certain \emph{multiplicities}
-$m_{\rho}$, $\rho \in J$.
+Let $V = \C^n$ be a $G$-module.  By complete reducibility, there are
+certain \emph{multiplicities} $m_{\rho}$, $\rho \in \hat{G}$, such that, up
+to isomorphism, $V = \bigoplus_{\rho \in \hat{G}} m_{\rho} W^{\rho} =
+\bigoplus_{\rho \in \hat{G}} \bigoplus_{j = 1}^{m_{\rho}} W^{\rho}_j$.  Let
+$I^{\rho}_j \colon W^{\rho}_j \to V$ and $E^{\rho}_j \colon V \to
+W^{\rho}_j$ be the natural injection of and the natural projection
+onto the component $W^{\rho}_j$.  Then $\id_V = \sum_{\rho} \sum_{j=1}^{m_\rho} E^{\rho}_j$.
+
+
+% \subsection{}
+% $\{I^{\rho}_j : j = 1, \dots, m_{\rho} \}$ is a basis of $\Hom_G(W^{\rho}, V)$,
+% whence $\dim \Hom_G(W^{\rho}, V) = m_{\rho}$.
+
+\subsection{Thm 1.2.14}
+$\End_G V = \Hom_G(V, V) = \bigoplus_{\rho} M_{m_{\rho}, m_{\rho}}(\C)$
+whence $\dim \End_G V = \sum_{\rho} m_{\rho}^2$.
+
+\subsection{Proof}
+ Let $\phi \in \End_G V$.  Then $\phi
+ = \id_V \circ \phi \circ \id_V
+ = (\sum_{\rho,j} E^{\rho}_j) \circ \phi \circ (\sum_{\sigma,k} E^{\sigma}_k)
+ = \sum_{\rho,j,\sigma,k} E^{\rho}_j \circ \phi \circ E^{\sigma}_k
+ = \sum_{\rho,j,k} a_{jk} E^{\rho}_j \circ E^{\rho}_k$, for certain $a_{jk}$, by Schur's Lemma.
+
 
 \subsection{Def 1.2.16}
-$V$ is \emph{multiplicity-free} if $m_{\rho} < 2$ for all $\rho \in J$.
+$V$ is \emph{multiplicity-free} if $m_{\rho} < 2$ for all $\rho \in \hat{G}$.
 
 \subsection{Cor 1.2.17}
 $V$ is multiplicity-free $\iff \End_G(V)$ is commutative.
 
 
+\subsection{Permutation Representations}
+Let $X$ be a $G$-set, with corresponding permutation module $V = \C X$.
+The action of $G$ on $X$ induces a $G$-action on $X \times X$.
+
+\subsection{Prop 1.4.1}
+$\End(\C X) = \C (X \times X)$ with product $(f \ast g)(x, y) =
+\sum_{z \in X} f(x, z) g(z, y)$ ($X \times X$-matrices over $\C$).
+And
+$\End_G(\C X) = \C (X \times X)^G$.
 \subsection{}
+For $(x, y) \in X \times X$ denote $(x, y)^{\dagger}:= (y, x)$.
+A $G$-orbit $\Omega \subseteq X \times X$ is \emph{symmetric}
+if $\Omega^{\dagger} = \Omega$.  The $G$-set $X$ is \emph{symmetric} if
+all $G$-orbits on $X \times X$ are symmetric.
+
+
+\subsection{Gelfand's Lemma, symmetric 1.4.8}
+If  $X$ is a symmetric $G$-set  then $\End_G(\C X)$ is commutative.
+
+\subsection{Proof}
+Let $f, g \in \C (X \times X)^G$, and regard them as functions
+$f, g \colon X \times X \to \C$ that are constant on $G$-orbits.
+Then $(f \ast g)(x, y) 
+= \sum_{z \in X} f(x, z) g(z, y)
+= \sum_{z \in X} g(y, z) f(z, x)
+= (g \ast f)(x, y)$.
+
+\subsection{Gelfand Pairs 1.4.9}
+Let $K \leq G$.  Then $(G, K)$ is a \emph{Gelfand Pair} if the
+permutation representation on $X = G/K$ is multiplicity-free.  If $X$
+is a symmetric $G$-set then $(G,K)$ is a \emph{symmetric Gelfand
+  pair}.
+
+\subsection{Exp 1.4.10}
+Let $X = \{1, \dots,n\}$.  Then, for $0 \leq k \leq n$, 
+$\Sym_n$ acts transitively on $\binom{X}{k} = \{A \subseteq X : \Size{A} = k\}$
+with stabilizer isomorphic to $\Sym_k \times \Sym_{n-k}$.
+Note that $(A, B)$ and $(A', B')$ in $\binom{X}{k} \times \binom{X}{k}$
+are in the same $G$-orbit if and only if $\Size{A \cap B} = \Size{A' \cap B'}$.
+Each orbit is symmetric since $\Size{A \cap B}  = \Size{B \cap A}$.
+
+
+\subsection{Thm 1.4.12}
+Let $K \leq G$ and let $X = G/K$. Suppose $V =\C X$ and $V =
+\sum_{\rho} m_{\rho} W^{\rho}$.  Then $m_{\rho} = \dim (W^{\rho})^K$
+for all $\rho \in \hat{G}$.
+
+\subsection{Cor 1.4.13}
+$(G, K)$ is a Gelfand pair if and only if $\dim (W^{\rho})^K$ for all $\rho \in \hat{G}$.
+
 
 \subsection{}
+If $X = G/K$ then
+$\C(X \times X)^G \cong \C X^K \cong \C (K\backslash G/K)$.
+Moreover, $X$ is symmetric if and only if $g^-1 \in KgK$ for
+all $g\in G$.
 
-\subsection{}
+\subsection{Gelfand's Lemma}
+Let $K \leq G$ and suppose $\tau \colon G \to G$ is an automorphism
+such that $g^{-1} \in K \tau(g) K$ for all $g \in G$.  Then $(G, K)$ is
+a Gelfand pair.
 
-\subsection{}
-
-\subsection{}
-
-\subsection{}
-
+\subsection{Proof} ...
 
 
 
+\subsection{Exp 1.5.26}
+$(G \times G, \tilde{G})$ is a Gelfand pair.
+$G \times G$ acts on $X = G$ as $g.(a,b) = a^{-1} g b$.
+The stabilizer of $1 \in G$ is the diagonal subgroup $\tilde{G} = \{(g, g) : g \in G\}$ of $G \times G$
+Using the automorphism $\tau \colon (a, b) \mapsto (b, a)$ of $G \times G$, we get $(a, b)^{-1} = (a^{-1}, b^{-1}) = 
+(a^{-1}, a^{-1})(b, a)(b^{-1}, b^{-1}) \in 
+\tilde{G}\tau(a,b)\tilde{G}$.
 
 
-\subsection{Gelfand Pairs.}
+\subsection{Conjugacy invariant functions}
+Regard $f = \sum_{g \in G} \alpha_g g \in \C G$ as a function
+$f \colon G \to \C$, $f(g) = \alpha_g$.
+Let $H \leq G$ and set 
+$\CC(G, H) = \{ f \in \C G : f(g) = f(g^h) \text{ for all } g \in G,\, h \in H\}$.
 
+\subsection{Lem 2.1.1}
+$\CC(G, H)$ is commutative if and only if $(H \times G, \tilde{H})$ is
+a Gelfand pair.  Since $\CC(G, H) = \End_{H \times G}(\C X)$, where $X
+= (H \times G)/\tilde{H} = G$ with action $\eta:$ $a.\eta(h,g) = h^{-1}a g$.
+
+
+\subsection{Cor 2.1.4}
+$\eta = \sum_{\sigma \in \hat{G}, \rho \in \hat{H}} m_{\rho, \sigma} (\sigma \times \rho)$, where 
+$m_{\rho, \sigma} = \dim \Hom_H(\rho, \Res^G_H \sigma')$,
+and where $\sigma'$ is the adjoint of $\sigma$: $\sigma'(g) = \sigma(g^{-1})^{\mathsf{tr}}$.
+
+
+
+\subsection{Multiplicity-free subgroups 2.1.9}
+A subgroup $H$ of $G$ is \emph{multiplicity-free} if
+$\Res^G_H \rho$ is a multiplicity-free representation of $H$ for all 
+$\rho \in \hat{G}$.
+
+
+\subsection{Thm 2.1.10} $H \leq G$ is multiplicity-free if and only if
+$(H \times G, \tilde{H})$ is
+a Gelfand pair.
 
 
 \end{document}
