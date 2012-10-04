@@ -54,18 +54,34 @@ after: Ceccherini-Silberstein - Representation Theory of the Symmetric Groups.
 Classify the (irreducible) matrix representations (over $\C$) of the symmetric group $\Sym_n$.
 
 \subsection{}
-Let $G$ be a finite group with group algebra $\C G = \{ \sum_{g \in G}
-\alpha_g g : \alpha_g \in \C \}$.  A representation of $G$ is a
-homomorphism $G \to \GL(V)$ for some (finite-dimensional) $\C$-space
-$V$.  This extends to a unique homomorphism $\C G \to \End(V)$. Then
-$V$ is a $\C G$-module with linear action $(v, a) \mapsto v.a$, $v \in
-V$, $a \in \C G$.  
+Let $G$ be a finite group with \emph{group algebra} $\C G = \{ \sum_{g
+  \in G} \alpha_g g : \alpha_g \in \C \}$.  An element $a = \sum_{g
+  \in G} \alpha_g g \in \C G$ can be regarded as a function $a \colon G
+\to \C$, $g \mapsto \alpha_g$.  From 
+\begin{align*}
+  a a' = \sum_{g \in G} \alpha_g g \sum_{g' \in G} \alpha'_g g'
+= \sum_{g \in G} \sum_{g' \in G} \alpha_g  \alpha'_g  g g'
+= \sum_{h \in G}  (\sum_{gg' = h} \alpha_g \alpha'_{g'}) h
+= \sum_{h \in G}  (\sum_g \alpha_g \alpha'_{g^{-1}h}) h,
+\end{align*}
+the \emph{convolution} product  on $\C G$ is given by $(a \star a')(h) = 
+\sum_g a(g) a'(g^{-1}h)$.
+
+\subsection{}
+A \emph{representation} of
+$G$ is a homomorphism $\rho \colon G \to \GL(V)$ for some
+(finite-dimensional) $\C$-space $V$.  This extends to a unique
+homomorphism $\rho \colon \C G \to \End(V)$. Then $V$ is a \emph{$\C
+  G$-module} (or simply a \emph{$G$-module}) with linear action $(v,
+a) \mapsto v.a= v \rho(a)$, $v \in V$, $a \in \C G$.
 
 \subsection{Schur's Lemma 1.2.1}
-Let $\hat{G}$ be such that $\{W^{\rho}: \rho \in \hat{G}\}$ are the simple
-$G$-modules.  Let $\rho, \sigma \in \hat{G}$.  Then $\Hom_G(W^{\rho},
-W^{\sigma}) = \{0\}$ unless $\rho = \sigma$, and $\End_G(W^{\rho}) =
-\Hom_G(W^{\rho}, W^{\rho}) = \Span{\id_{W^{\rho}}}$.
+Let $\hat{G}$ be a complete set of irreducible representations $ \rho
+\colon G \to \GL(W^{\rho})$ such that $\{W^{\rho}: \rho \in \hat{G}\}$
+are the simple $G$-modules.  Let $\rho, \sigma \in \hat{G}$.  Then
+$\Hom_G(W^{\rho}, W^{\sigma}) = \{0\}$ unless $\rho = \sigma$, and
+$\End_G(W^{\rho}) = \Hom_G(W^{\rho}, W^{\rho}) =
+\Span{\id_{W^{\rho}}}$ is $1$-dimensional as $\C$-space.
 
 
 \subsection{}
@@ -75,7 +91,9 @@ to isomorphism, $V = \bigoplus_{\rho \in \hat{G}} m_{\rho} W^{\rho} =
 \bigoplus_{\rho \in \hat{G}} \bigoplus_{j = 1}^{m_{\rho}} W^{\rho}_j$.  Let
 $I^{\rho}_j \colon W^{\rho}_j \to V$ and $E^{\rho}_j \colon V \to
 W^{\rho}_j$ be the natural injection of and the natural projection
-onto the component $W^{\rho}_j$.  Then $\id_V = \sum_{\rho} \sum_{j=1}^{m_\rho} E^{\rho}_j$.
+onto the component $W^{\rho}_j$.  Then $\id_V = 
+= \sum_{\rho} \sum_{j=1}^{m_{\rho}} I^{\rho}_j =
+\sum_{\rho} \sum_{j=1}^{m_\rho} E^{\rho}_j$.
 
 
 % \subsection{}
@@ -89,13 +107,14 @@ whence $\dim \End_G V = \sum_{\rho} m_{\rho}^2$.
 \subsection{Proof}
  Let $\phi \in \End_G V$.  Then $\phi
  = \id_V \circ \phi \circ \id_V
- = (\sum_{\rho,j} E^{\rho}_j) \circ \phi \circ (\sum_{\sigma,k} E^{\sigma}_k)
- = \sum_{\rho,j,\sigma,k} E^{\rho}_j \circ \phi \circ E^{\sigma}_k
+ = (\sum_{\rho,j} E^{\rho}_j) \circ \phi \circ (\sum_{\sigma,k} I^{\sigma}_k)
+ = \sum_{\rho,j,\sigma,k} E^{\rho}_j \circ \phi \circ I^{\sigma}_k
  = \sum_{\rho,j,k} a_{jk} E^{\rho}_j \circ E^{\rho}_k$, for certain $a_{jk}$, by Schur's Lemma.
 
 
 \subsection{Def 1.2.16}
-$V$ is \emph{multiplicity-free} if $m_{\rho} < 2$ for all $\rho \in \hat{G}$.
+A $G$-module $V = \bigoplus_{\rho} m_{\rho} W^{\rho}$ is
+\emph{multiplicity-free} if $m_{\rho} < 2$ for all $\rho \in \hat{G}$.
 
 \subsection{Cor 1.2.17}
 $V$ is multiplicity-free $\iff \End_G(V)$ is commutative.
@@ -108,8 +127,9 @@ The action of $G$ on $X$ induces a $G$-action on $X \times X$.
 \subsection{Prop 1.4.1}
 $\End(\C X) = \C (X \times X)$ with product $(f \ast g)(x, y) =
 \sum_{z \in X} f(x, z) g(z, y)$ ($X \times X$-matrices over $\C$).
-And
-$\End_G(\C X) = \C (X \times X)^G$.
+And $\End_G(\C X) = \C (X \times X)^G$, the functions that are
+constant on $G$-orbits.
+
 \subsection{}
 For $(x, y) \in X \times X$ denote $(x, y)^{\dagger}:= (y, x)$.
 A $G$-orbit $\Omega \subseteq X \times X$ is \emph{symmetric}
@@ -117,7 +137,7 @@ if $\Omega^{\dagger} = \Omega$.  The $G$-set $X$ is \emph{symmetric} if
 all $G$-orbits on $X \times X$ are symmetric.
 
 
-\subsection{Gelfand's Lemma, symmetric 1.4.8}
+\subsection{Gelfand's Lemma, symmetric case 1.4.8}
 If  $X$ is a symmetric $G$-set  then $\End_G(\C X)$ is commutative.
 
 \subsection{Proof}
@@ -130,9 +150,9 @@ Then $(f \ast g)(x, y)
 
 \subsection{Gelfand Pairs 1.4.9}
 Let $K \leq G$.  Then $(G, K)$ is a \emph{Gelfand Pair} if the
-permutation representation on $X = G/K$ is multiplicity-free.  If $X$
-is a symmetric $G$-set then $(G,K)$ is a \emph{symmetric Gelfand
-  pair}.
+permutation representation of $G$ on $X = G/K$ is multiplicity-free.
+If $X$ is a symmetric $G$-set then $(G,K)$ is a \emph{symmetric
+  Gelfand pair}.
 
 \subsection{Exp 1.4.10}
 Let $X = \{1, \dots,n\}$.  Then, for $0 \leq k \leq n$, 
@@ -144,19 +164,20 @@ Each orbit is symmetric since $\Size{A \cap B}  = \Size{B \cap A}$.
 
 
 \subsection{Thm 1.4.12}
-Let $K \leq G$ and let $X = G/K$. Suppose $V =\C X$ and $V =
-\sum_{\rho} m_{\rho} W^{\rho}$.  Then $m_{\rho} = \dim (W^{\rho})^K$
-for all $\rho \in \hat{G}$.
+(Frobenius Reciprocity.) Let $K \leq G$ and let $X = G/K$. Suppose $V
+=\C X = \sum_{\rho} m_{\rho} W^{\rho}$.  Then $m_{\rho} = \dim
+(W^{\rho})^K$ for all $\rho \in \hat{G}$.
 
 \subsection{Cor 1.4.13}
-$(G, K)$ is a Gelfand pair if and only if $\dim (W^{\rho})^K$ for all $\rho \in \hat{G}$.
+$(G, K)$ is a Gelfand pair if and only if $\dim (W^{\rho})^K \leq 1$
+for all $\rho \in \hat{G}$.
 
 
 \subsection{}
-If $X = G/K$ then
-$\C(X \times X)^G \cong \C X^K \cong \C (K\backslash G/K)$.
-Moreover, $X$ is symmetric if and only if $g^-1 \in KgK$ for
-all $g\in G$.
+If $X = G/K$ then $\C(X \times X)^G \cong \C X^K \cong \C (K\backslash
+G/K)$.  Thus $(G,K)$ is a Gelfand pair if and only if $\C (K\backslash
+G/K)$ (as subalgebra of $\C G$) is commutative.  Moreover, $X$ is
+symmetric if and only if $g^{-1} \in KgK$ for all $g\in G$.
 
 \subsection{Gelfand's Lemma}
 Let $K \leq G$ and suppose $\tau \colon G \to G$ is an automorphism
